@@ -22,9 +22,12 @@ const Header = () => {
             <img className='w-6' src={LoginSvg} alt="" />
             <p className='font-medium text-[#434343]'>ورود | ثبت نام</p>
           </div>
-          <div className=" Shopping-cart flex items-center">
+          <div className=" Shopping-cart flex items-center relative">
+            <div>
             <img className='w-6 ' src={ShoppingSvg} alt="" />
+            </div>
             <p className='font-medium text-[#434343]'>سبد خرید</p>
+            <span className='absolute bottom-3 right-[-9px] bg-[#DCACB1] rounded-full w-4 h-4 flex items-center justify-center'>۰</span>
           </div>
         </div>
     </div>
