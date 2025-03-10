@@ -2,6 +2,8 @@ import CategoryIcon from "../../Assets/Images/medal-star.svg"
 import { Link } from "react-router-dom"
 import BestsellerItem from "../BestsellerItem/BestsellerItem"
 import manImg from "../../Assets/Images/img.png"
+import HeartImg from "../../Assets/Images/heart.png"
+
 
 const Bestsellers = () => {
     const products = [
@@ -57,7 +59,7 @@ const Bestsellers = () => {
             </div>
             <div  className='grid grid-cols-4 gap-6 my-6'>
                 {products.map((item) => {
-                    return <BestsellerItem img={item.img} title={item.title} text={item.text}></BestsellerItem>
+                    return <BestsellerItem img={item.img} title={item.title} text={item.text} heart={HeartImg} ></BestsellerItem>
                 })}
             </div>
         </div>
