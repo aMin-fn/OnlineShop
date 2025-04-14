@@ -2,7 +2,7 @@ import React from 'react'
 import userphoto from "../../Assets/Images/Rectangle 5.png"
 const Profile = () => {
   return (
-    <div className='w-96  border border-solid border-[#EDEDED] rounded-2xl flex flex-col items-center py-6 px-8'>
+    <div className='w-96  border border-solid border-[#EDEDED] rounded-2xl flex flex-col items-center py-6 px-8 h-[750px]'>
       
       <div className='text-center border-b border-solid border-[#EDEDED] w-[323px] flex flex-col items-center pb-1 mb-1'>
         <div className='relative mb-2'>

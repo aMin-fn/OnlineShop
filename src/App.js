@@ -5,7 +5,9 @@ import routes from './routes.js';
 function App() {
   const route = useRoutes(routes);
   return (
-   route
+    <div className='font-iranyekan'>
+       {route}
+    </div>
   );
 }
 
