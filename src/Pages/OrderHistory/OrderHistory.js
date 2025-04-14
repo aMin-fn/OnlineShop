@@ -1,0 +1,123 @@
+import React from 'react'
+import Profile from '../../Components/Profile/Profile'
+import Header from '../../Components/Header/Header'
+import MyFooter from '../../Components/MyFooter/MyFooter'
+import MyNavbar from '../../Components/MyNavbar/MyNavbar'
+import BestsellerItem from '../../Components/BestsellerItem/BestsellerItem'
+import HeartImg from "../../Assets/Images/heart.png"
+import womenImg from "../../Assets/Images/women.png"
+import Item from '../../Components/Item/Item'
+import { Link, NavLink } from 'react-router-dom'
+import IphoneImg from "../../Assets/Images/Rectangle 12.png"
+import "./OrderHistory.css"
+const OrderHistory = () => {
+    return (
+        <div>
+            <Header />
+            <hr />
+            <div className='max-w-[1224px] m-auto'>
+                <MyNavbar />
+                <h1 className='font-bold text-3xl my-5'>پروفایل</h1>
+                <div className='flex gap-6'>
+                    <Profile />
+                    <div className='border border-solid border-[#EDEDED] h-[785px] w-[808px] rounded-2xl px-6'>
+                        <h1 className='font-bold text-2xl my-5'>تاریخچه سفارشات</h1>
+                        <div>
+                            <ul className='flex gap-7'>
+                                <li>
+                                    <NavLink className='py-1.5 px-2 ' to="/order-history">جاری ۲</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='py-1.5 px-2' to="/" >تحویل شده ۲۶</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='py-1.5 px-2' to="/" >مرجوع شده ۴</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='py-1.5 px-2' to="/" >لغو شده ۴</NavLink>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className='border border-solid border-[#EDEDED] rounded-lg w-full h-[306px] my-6 p-4 relative'>
+                            <div className='flex'>
+                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.2398 23.25H8.75982C6.86982 23.25 5.48982 22.46 4.95982 21.1C4.40982 19.68 4.91982 17.92 6.23982 16.73L10.8798 12.5L6.23982 8.27C4.91982 7.08 4.40982 5.32 4.95982 3.9C5.48982 2.53 6.86982 1.75 8.75982 1.75H15.2398C17.1298 1.75 18.5098 2.54 19.0398 3.9C19.5898 5.32 19.0798 7.08 17.7598 8.27L13.1198 12.5L17.7698 16.73C19.0798 17.92 19.5998 19.68 19.0498 21.1C18.5098 22.46 17.1298 23.25 15.2398 23.25ZM11.9998 13.51L7.24982 17.83C6.40982 18.6 6.03982 19.72 6.35982 20.55C6.65982 21.32 7.50982 21.75 8.75982 21.75H15.2398C16.4898 21.75 17.3398 21.33 17.6398 20.55C17.9598 19.72 17.5998 18.6 16.7498 17.83L11.9998 13.51ZM8.75982 3.25C7.50982 3.25 6.65982 3.67 6.35982 4.45C6.03982 5.28 6.39982 6.4 7.24982 7.17L11.9998 11.49L16.7498 7.17C17.5898 6.4 17.9598 5.28 17.6398 4.45C17.3398 3.68 16.4898 3.25 15.2398 3.25H8.75982Z" fill="#A9791C" />
+                                </svg>
+                                <p>در حال پردازش</p>
+                            </div>
+                            <div className='flex gap-6 my-4'>
+                                <p>۳ شهریور ۱۴۰۲</p>
+                                <p>کد سفارش ۳۵۴۵۳۴۵۲۱</p>
+                                <p>مبلغ ۵۴۵,۰۰۰ تومان</p>
+                                <p>تخفیف ۵۴۵,۰۰۰ تومان</p>
+                            </div>
+                            <hr className='absolute  w-full right-0 ' />
+                            <div className='flex gap-[18.5px] mt-8 mb-4'>
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                            </div>
+                            <hr className='absolute  w-full right-0 ' />
+                            <div className='flex gap-2 justify-end mt-12'>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.9999 22.2478C11.1799 22.2478 10.3599 21.9878 9.6799 21.4778L4.46991 17.5778C3.49991 16.8478 2.91992 15.6878 2.91992 14.4778V1.75781H21.0799V14.4778C21.0799 15.6878 20.4999 16.8478 19.5299 17.5778L14.3199 21.4778C13.6399 21.9878 12.8199 22.2478 11.9999 22.2478ZM4.41992 3.24782V14.4678C4.41992 15.2078 4.7799 15.9178 5.3699 16.3678L10.5799 20.2678C11.4199 20.8978 12.5899 20.8978 13.4299 20.2678L18.6399 16.3678C19.2299 15.9178 19.5899 15.2078 19.5899 14.4678V3.24782H4.41992Z" fill="#A72F3B" />
+                                <path d="M22 3.25H2C1.59 3.25 1.25 2.91 1.25 2.5C1.25 2.09 1.59 1.75 2 1.75H22C22.41 1.75 22.75 2.09 22.75 2.5C22.75 2.91 22.41 3.25 22 3.25Z" fill="#A72F3B" />
+                                <path d="M16 8.75H8C7.59 8.75 7.25 8.41 7.25 8C7.25 7.59 7.59 7.25 8 7.25H16C16.41 7.25 16.75 7.59 16.75 8C16.75 8.41 16.41 8.75 16 8.75Z" fill="#A72F3B" />
+                                <path d="M16 13.75H8C7.59 13.75 7.25 13.41 7.25 13C7.25 12.59 7.59 12.25 8 12.25H16C16.41 12.25 16.75 12.59 16.75 13C16.75 13.41 16.41 13.75 16 13.75Z" fill="#A72F3B" />
+                            </svg>
+                            <p className='text-baseRed font-medium'>مشاهده سفارش</p>
+                            </div>
+
+
+                        </div>
+                        <div className='border border-solid border-[#EDEDED] rounded-lg w-full h-[306px] my-6 p-4 relative'>
+                            <div className='flex'>
+                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.2398 23.25H8.75982C6.86982 23.25 5.48982 22.46 4.95982 21.1C4.40982 19.68 4.91982 17.92 6.23982 16.73L10.8798 12.5L6.23982 8.27C4.91982 7.08 4.40982 5.32 4.95982 3.9C5.48982 2.53 6.86982 1.75 8.75982 1.75H15.2398C17.1298 1.75 18.5098 2.54 19.0398 3.9C19.5898 5.32 19.0798 7.08 17.7598 8.27L13.1198 12.5L17.7698 16.73C19.0798 17.92 19.5998 19.68 19.0498 21.1C18.5098 22.46 17.1298 23.25 15.2398 23.25ZM11.9998 13.51L7.24982 17.83C6.40982 18.6 6.03982 19.72 6.35982 20.55C6.65982 21.32 7.50982 21.75 8.75982 21.75H15.2398C16.4898 21.75 17.3398 21.33 17.6398 20.55C17.9598 19.72 17.5998 18.6 16.7498 17.83L11.9998 13.51ZM8.75982 3.25C7.50982 3.25 6.65982 3.67 6.35982 4.45C6.03982 5.28 6.39982 6.4 7.24982 7.17L11.9998 11.49L16.7498 7.17C17.5898 6.4 17.9598 5.28 17.6398 4.45C17.3398 3.68 16.4898 3.25 15.2398 3.25H8.75982Z" fill="#A9791C" />
+                                </svg>
+                                <p>در حال پردازش</p>
+                            </div>
+                            <div className='flex gap-6 my-4'>
+                                <p>۳ شهریور ۱۴۰۲</p>
+                                <p>کد سفارش ۳۵۴۵۳۴۵۲۱</p>
+                                <p>مبلغ ۵۴۵,۰۰۰ تومان</p>
+                                <p>تخفیف ۵۴۵,۰۰۰ تومان</p>
+                            </div>
+                            <hr className='absolute  w-full right-0 ' />
+                            <div className='flex gap-[18.5px] mt-8 mb-4'>
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                                <img src={IphoneImg} alt="" />
+                            </div>
+                            <hr className='absolute  w-full right-0 ' />
+                            <div className='flex gap-2 justify-end mt-12'>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.9999 22.2478C11.1799 22.2478 10.3599 21.9878 9.6799 21.4778L4.46991 17.5778C3.49991 16.8478 2.91992 15.6878 2.91992 14.4778V1.75781H21.0799V14.4778C21.0799 15.6878 20.4999 16.8478 19.5299 17.5778L14.3199 21.4778C13.6399 21.9878 12.8199 22.2478 11.9999 22.2478ZM4.41992 3.24782V14.4678C4.41992 15.2078 4.7799 15.9178 5.3699 16.3678L10.5799 20.2678C11.4199 20.8978 12.5899 20.8978 13.4299 20.2678L18.6399 16.3678C19.2299 15.9178 19.5899 15.2078 19.5899 14.4678V3.24782H4.41992Z" fill="#A72F3B" />
+                                <path d="M22 3.25H2C1.59 3.25 1.25 2.91 1.25 2.5C1.25 2.09 1.59 1.75 2 1.75H22C22.41 1.75 22.75 2.09 22.75 2.5C22.75 2.91 22.41 3.25 22 3.25Z" fill="#A72F3B" />
+                                <path d="M16 8.75H8C7.59 8.75 7.25 8.41 7.25 8C7.25 7.59 7.59 7.25 8 7.25H16C16.41 7.25 16.75 7.59 16.75 8C16.75 8.41 16.41 8.75 16 8.75Z" fill="#A72F3B" />
+                                <path d="M16 13.75H8C7.59 13.75 7.25 13.41 7.25 13C7.25 12.59 7.59 12.25 8 12.25H16C16.41 12.25 16.75 12.59 16.75 13C16.75 13.41 16.41 13.75 16 13.75Z" fill="#A72F3B" />
+                            </svg>
+                            <p className='text-baseRed font-medium'>مشاهده سفارش</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <MyFooter />
+        </div>
+    )
+}
+
+export default OrderHistory
