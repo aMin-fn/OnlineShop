@@ -1,0 +1,8 @@
+.user-signup label
+{
+    color: #CBCBCB;
+}
+.user-signup input::placeholder
+{
+    color: black;
+}

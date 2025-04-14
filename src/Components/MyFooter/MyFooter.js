@@ -7,7 +7,7 @@ const MyFooter = () => {
         <div className="max-w-[1224px] flex justify-between m-auto items-center h-[180px]  ">
           <div className="right">
             <p className="font-normal text-sm text-white">برای دریافت آخرین اخبار و تخفیف های جدید،ایمیل خود را وارد نمایید</p>
-            <input type="text" placeholder="ایمیل شما" className="py-[6px] px-2 w-[392px] h-10 bg-transparent border border-solid border-white rounded-lg mt-1 ml-3" />
+            <input type="text" placeholder="ایمیل شما" className="text-white py-[6px] px-2 w-[392px] h-10 bg-transparent border border-solid border-white rounded-lg mt-1 ml-3" />
             <button type="button" className="py-2 px-6 bg-baseRed rounded-lg text-white ">ثبت</button>
           </div>
           <div className="left h-20 ml-20 ">

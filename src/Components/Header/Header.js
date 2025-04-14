@@ -4,9 +4,10 @@ import Logo from '../../Assets/Images/LOGO.svg'
 import HeaderSearchLogo from "../../Assets/Images/search-normal.png"
 import LoginSvg from "../../Assets/Images/Login.svg"
 import ShoppingSvg from "../../Assets/Images/shopping-cart.svg"
+import { Link } from 'react-router-dom'
 const Header = () => {
   return (
-    <div className='header-container max-w-[1224px] m-auto bg-white'>
+    <div className='header-container w-[1224px] m-auto bg-white'>
         <div className='top-header py-6 flex justify-between items-center'>
           <div className="logo flex">
             <img src={Logo} alt="" />
@@ -20,7 +21,7 @@ const Header = () => {
           </div>
           <div className="login-signup flex items-center">
             <img className='w-6' src={LoginSvg} alt="" />
-            <p className='font-medium text-[#434343]'>ورود | ثبت نام</p>
+            <Link className='font-medium text-[#434343] text-sm'>ورود | ثبت نام</Link>
           </div>
           <div className=" Shopping-cart flex items-center relative">
             <div>
