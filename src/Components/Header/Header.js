@@ -4,12 +4,13 @@ import Logo from '../../Assets/Images/LOGO.svg'
 import HeaderSearchLogo from "../../Assets/Images/search-normal.png"
 import LoginSvg from "../../Assets/Images/Login.svg"
 import ShoppingSvg from "../../Assets/Images/shopping-cart.svg"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div className='header-container w-[1224px] m-auto bg-white'>
         <div className='top-header py-6 flex justify-between items-center'>
-          <div className="logo flex">
+          <div onClick={()=>navigate("/")} className="logo flex cursor-pointer">
             <img src={Logo} alt="" />
             <div><p className='text-4xl font-bold'><span className='text-baseRed'>ک</span>استومی</p>
             <p className='font-medium text-sm'>فروشگاه اینترنتی</p>
@@ -27,7 +28,7 @@ const Header = () => {
             <div>
             <img className='w-6 ' src={ShoppingSvg} alt="" />
             </div>
-            <p className='font-medium text-[#434343]'>سبد خرید</p>
+            <Link to={"/shopping"} className='font-medium text-[#434343]'>سبد خرید</Link>
             <span className='absolute bottom-3 right-[-9px] bg-[#DCACB1] rounded-full w-4 h-4 flex items-center justify-center'>۰</span>
           </div>
         </div>

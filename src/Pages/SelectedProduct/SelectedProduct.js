@@ -5,8 +5,18 @@ import MyFooter from '../../Components/MyFooter/MyFooter'
 import womenImg from "../../Assets/Images/Photo.png"
 import { FaArrowDown } from "react-icons/fa6";
 import { RiArrowDownSFill } from "react-icons/ri";
+import { Modal } from "antd";
 
 const SelectedProduct = () => {
+    const [commentModal, setCommentModal] = useState(false);
+
+    const [firstStar, setFirstStar] = useState(false);
+    const [secoundStar, setSecoundStar] = useState(false);
+    const [thirdStar, setThirdStar] = useState(false);
+    const [forthStar, setForthStar] = useState(false);
+    const [fifthStar, setFifthStar] = useState(false);
+
+
     return (
         <div>
             <Header />
@@ -137,7 +147,7 @@ const SelectedProduct = () => {
                             <p className='text-[#898989] text-sm'>از  مجموع ۱۲۰ امتیاز</p>
                         </div>
                         <p className='mt-4 mb-2 text-[#656565]'>نظر خود را ثبت کنید</p>
-                        <button className='border-baseRed border py-2 px-6 rounded-lg font-medium text-baseRed w-40'>ثبت دیدگاه</button>
+                        <button onClick={() => setCommentModal(true)} className='border-baseRed border py-2 px-6 rounded-lg font-medium text-baseRed w-40'>ثبت دیدگاه</button>
                     </div>
                     <div className='mt-20'>
                         <div className='flex gap-1'>
@@ -362,6 +372,75 @@ const SelectedProduct = () => {
 
             </div>
             <MyFooter />
+            <Modal
+                className='font-iranyekan'
+                open={commentModal}
+                closeIcon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#434343" />
+                    <path d="M9.16937 15.5794C8.97937 15.5794 8.78938 15.5094 8.63938 15.3594C8.34938 15.0694 8.34938 14.5894 8.63938 14.2994L14.2994 8.63938C14.5894 8.34938 15.0694 8.34938 15.3594 8.63938C15.6494 8.92937 15.6494 9.40937 15.3594 9.69937L9.69937 15.3594C9.55937 15.5094 9.35937 15.5794 9.16937 15.5794Z" fill="#434343" />
+                    <path d="M14.8294 15.5794C14.6394 15.5794 14.4494 15.5094 14.2994 15.3594L8.63938 9.69937C8.34938 9.40937 8.34938 8.92937 8.63938 8.63938C8.92937 8.34938 9.40937 8.34938 9.69937 8.63938L15.3594 14.2994C15.6494 14.5894 15.6494 15.0694 15.3594 15.3594C15.2094 15.5094 15.0194 15.5794 14.8294 15.5794Z" fill="#434343" />
+                </svg>
+                }
+                
+                footer={null}
+                centered
+                onCancel={() => setCommentModal(false)}
+                width={649}
+            >
+                <div className='px-32'>
+                    <h1 className='text-xl font-bold mt-2 text-[#434343]'>نظر خود را با ما در میان بگذارید</h1>
+                    <p className='text-[#898989] text-base mt-1'>در مورد تیشرت ساده سفید </p>
+                    <div className='flex gap-2 items-center mt-3 mb-2'>
+                        <p>امتیاز دهید</p>
+                        <div className='flex gap-1'>
+                            <svg onClick={()=>setFirstStar(prev =>!prev)}  width="16" height="15" viewBox="0 0 16 15" fill={`${firstStar ? "#F4B740" : "#FFF"}`} xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.90234 4.98535L10.0195 5.2207L10.2793 5.25879L14.5342 5.87598L11.4551 8.87793L11.2666 9.06152L11.3115 9.32031L12.0381 13.5576L8.23242 11.5576L8 11.4355L7.76758 11.5576L3.96094 13.5576L4.68848 9.32031L4.7334 9.06152L4.54492 8.87793L1.46484 5.87598L5.7207 5.25879L5.98047 5.2207L6.09766 4.98535L8 1.12988L9.90234 4.98535Z" stroke="#F4B740" />
+                            </svg>
+                          
+                            <svg onClick={()=>setSecoundStar(prev =>!prev)}  width="16" height="15" viewBox="0 0 16 15" fill={`${secoundStar ? "#F4B740" : "#FFF"}`} xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.90234 4.98535L10.0195 5.2207L10.2793 5.25879L14.5342 5.87598L11.4551 8.87793L11.2666 9.06152L11.3115 9.32031L12.0381 13.5576L8.23242 11.5576L8 11.4355L7.76758 11.5576L3.96094 13.5576L4.68848 9.32031L4.7334 9.06152L4.54492 8.87793L1.46484 5.87598L5.7207 5.25879L5.98047 5.2207L6.09766 4.98535L8 1.12988L9.90234 4.98535Z" stroke="#F4B740" />
+                            </svg>
+                          
+                            <svg onClick={()=>setThirdStar(prev =>!prev)}  width="16" height="15" viewBox="0 0 16 15" fill={`${thirdStar ? "#F4B740" : "#FFF"}`} xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.90234 4.98535L10.0195 5.2207L10.2793 5.25879L14.5342 5.87598L11.4551 8.87793L11.2666 9.06152L11.3115 9.32031L12.0381 13.5576L8.23242 11.5576L8 11.4355L7.76758 11.5576L3.96094 13.5576L4.68848 9.32031L4.7334 9.06152L4.54492 8.87793L1.46484 5.87598L5.7207 5.25879L5.98047 5.2207L6.09766 4.98535L8 1.12988L9.90234 4.98535Z" stroke="#F4B740" />
+                            </svg>
+                          
+                            <svg onClick={()=>setForthStar(prev =>!prev)}  width="16" height="15" viewBox="0 0 16 15" fill={`${forthStar ? "#F4B740" : "#FFF"}`} xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.90234 4.98535L10.0195 5.2207L10.2793 5.25879L14.5342 5.87598L11.4551 8.87793L11.2666 9.06152L11.3115 9.32031L12.0381 13.5576L8.23242 11.5576L8 11.4355L7.76758 11.5576L3.96094 13.5576L4.68848 9.32031L4.7334 9.06152L4.54492 8.87793L1.46484 5.87598L5.7207 5.25879L5.98047 5.2207L6.09766 4.98535L8 1.12988L9.90234 4.98535Z" stroke="#F4B740" />
+                            </svg>
+                          
+                            <svg onClick={()=>setFifthStar(prev =>!prev)}  width="16" height="15" viewBox="0 0 16 15" fill={`${fifthStar ? "#F4B740" : "#FFF"}`} xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.90234 4.98535L10.0195 5.2207L10.2793 5.25879L14.5342 5.87598L11.4551 8.87793L11.2666 9.06152L11.3115 9.32031L12.0381 13.5576L8.23242 11.5576L8 11.4355L7.76758 11.5576L3.96094 13.5576L4.68848 9.32031L4.7334 9.06152L4.54492 8.87793L1.46484 5.87598L5.7207 5.25879L5.98047 5.2207L6.09766 4.98535L8 1.12988L9.90234 4.98535Z" stroke="#F4B740" />
+                            </svg>
+                          
+
+                        </div>
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <div className='flex flex-col gap-1 '>
+                            <label className='text-[#CBCBCB] select-none' htmlFor="">عنوان نظر</label>
+                            <input className='border border-[#CBCBCB] rounded-lg h-10' type="text" />
+                        </div>
+                        <div className='flex flex-col gap-1 '>
+                            <label className='text-[#CBCBCB] select-none' htmlFor="">نکات مثبت</label>
+                            <input className='border border-[#CBCBCB] rounded-lg h-10' type="text" />
+                        </div>
+                        <div className='flex flex-col gap-1 '>
+                            <label className='text-[#CBCBCB] select-none' htmlFor="">نکات منفی</label>
+                            <input className='border border-[#CBCBCB] rounded-lg h-10' type="text" />
+                        </div>
+                        <div className='flex flex-col gap-1 '>
+                            <label className='text-[#CBCBCB] select-none' htmlFor=""> متن نظر <span className='text-red-500'>*</span></label>
+                            <textarea className='min-h-20 border border-[#CBCBCB] rounded-lg py-1.5 px-2 placeholder-black placeholder:font-light' placeholder='نظر خود را وارد کنید' name="" id=""></textarea>
+                        </div>
+                        <div className='mt-7'>
+                            <button onClick={() => setCommentModal(false)} className='h-10 flex items-center justify-center bg-baseRed text-white w-full rounded-lg'>ثبت دیدگاه</button>
+                            <p className='text-center text-[10px] text-[#434343] mt-1' >ثبت دیدگاه به معنی موافقت شما با قوانین انتشار کاستومی است.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </Modal>
         </div>
     )
 }

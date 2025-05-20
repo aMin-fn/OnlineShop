@@ -2,7 +2,9 @@ import './Hero.css'
 import HeroImg from '../../Assets/Images/3 girls 1.svg'
 import Brush from "../../Assets/Images/brush.svg"
 import Gol from "../../Assets/Images/goll3 1.svg"
+import { useNavigate } from 'react-router-dom'
 const Hero = () => {
+    const navigate = useNavigate();
     return (
         <div className="h-[444px] rounded-2xl bg-[#EDD5D8] flex py-10 px-16 items-center my-6">
             <div className="desc-container">
@@ -13,7 +15,7 @@ const Hero = () => {
                     <img src={Brush} alt="" />
                     <p className='text-white mr-2'>شروع طراحی</p>
                 </button>
-               <button className='h-12 w-[184px] border border-baseRed rounded-lg text-baseRed font-medium' type="button"><p>دیدن محصولات</p></button>
+               <button onClick={()=>navigate("/other-products")} className='h-12 w-[184px] border border-baseRed rounded-lg text-baseRed font-medium' type="button"><p>دیدن محصولات</p></button>
                
                </div>
             </div>

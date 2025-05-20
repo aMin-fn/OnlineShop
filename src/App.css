@@ -4,3 +4,9 @@
     padding: 0;
     margin: 0;
 }
+.ant-modal-close {
+    top: 25px !important;
+    left: 20px !important;
+  
+    position: absolute;
+}

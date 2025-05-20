@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'
+
 const BestsellerItem = ({img,title,text,heart}) => {
+      const navigate = useNavigate();
+
   return (
-    <div className="p-4 border-[#CBCBCB] border-solid border rounded-2xl w-[288px] ">
+    <div onClick={()=>navigate("/selected-products")} className="p-4 cursor-pointer border-[#CBCBCB] border-solid border rounded-2xl w-[288px] ">
         <img src={img} alt="" />
         <h4 className="font-bold text-lg my-3 relative">
             {title}
