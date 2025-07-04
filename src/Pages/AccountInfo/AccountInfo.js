@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Profile from '../../Components/Profile/Profile'
 import Header from '../../Components/Header/Header'
 import MyFooter from '../../Components/MyFooter/MyFooter'
@@ -8,7 +8,83 @@ import HeartImg from "../../Assets/Images/heart.png"
 import womenImg from "../../Assets/Images/women.png"
 import Item from '../../Components/Item/Item'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 const AccountInfo = () => {
+         const [myFav, setMyFav] = useState([]);
+              const [profile, setProfile] = useState({});
+      
+              const getprofile = async () => {
+              try {
+                  const response = await axios.get('http://localhost:8000/api/accounts/profile/', {
+                      headers: {
+                          Authorization: `Bearer ${localStorage.getItem('token')}`,
+                      },
+                  });
+                  console.log("✅ profile:", response.data);
+                  // بقیه کدها مثل setState یا نمایش داده‌ها...
+                  setProfile(response.data)
+              } catch (error) {
+                  if (error.response) {
+                      // خطاهایی که از سمت سرور اومدن (مثلاً 401، 403، 500)
+                      console.error(`❌ Error ${error.response.status}:`, error.response.data);
+      
+                      if (error.response.status === 401) {
+                          // مثلاً بفرستش به صفحه لاگین یا پیام بده
+                          alert("دسترسی غیرمجاز. لطفاً دوباره لاگین کنید.");
+                      }
+      
+                  } else if (error.request) {
+                      // درخواست فرستاده شده ولی پاسخی نگرفتیم
+                      console.error("❌ No response from server:", error.request);
+                  } else {
+                      // خطای مربوط به ساختار خود کد یا axios
+                      console.error("❌ Request setup error:", error.message);
+                  }
+              }
+          };
+         
+          const getFavorites = async () => {
+              try {
+                  const response = await axios.get('http://localhost:8000/api/accounts/favorites/', {
+                      headers: {
+                          Authorization: `Bearer ${localStorage.getItem('token')}`,
+                      },
+                  });
+                  setMyFav(response.data)
+                  console.log("✅ Favorites:", response.data);
+                  // بقیه کدها مثل setState یا نمایش داده‌ها...
+      
+              } catch (error) {
+                  if (error.response) {
+                      // خطاهایی که از سمت سرور اومدن (مثلاً 401، 403، 500)
+                      console.error(`❌ Error ${error.response.status}:`, error.response.data);
+      
+                      if (error.response.status === 401) {
+                          // مثلاً بفرستش به صفحه لاگین یا پیام بده
+                          alert("دسترسی غیرمجاز. لطفاً دوباره لاگین کنید.");
+                      }
+      
+                  } else if (error.request) {
+                      // درخواست فرستاده شده ولی پاسخی نگرفتیم
+                      console.error("❌ No response from server:", error.request);
+                  } else {
+                      // خطای مربوط به ساختار خود کد یا axios
+                      console.error("❌ Request setup error:", error.message);
+                  }
+              }
+          };
+          
+           useEffect(() => {
+              getprofile()
+                        getFavorites()
+    
+          }, [])
+          
+                               const [name, setName] = useState("");
+
+
+
+
     return (
         <div>
             <Header />
@@ -38,14 +114,14 @@ const AccountInfo = () => {
                             <div className='flex gap-6'>
                                 <div className='h-16 w-72 text-[#CBCBCB]'>
                                     <label htmlFor="">نام و نام خانوادگی </label>
-                                    <input className='py-1.5 px-2 w-full border border-[#CBCBCB] rounded-lg h-10' type="text" placeholder='نگار زمانی' />
+                                    <input className='py-1.5 px-2 w-full border border-[#CBCBCB] rounded-lg h-10' type="text" placeholder={`${profile.first_name} ${profile.last_name}`} />
                                 </div>
                                 <div className='h-16 w-72 text-[#CBCBCB] relative'>
-                                    <label htmlFor="">نام و نام خانوادگی </label>
+                                    <label htmlFor="">کدملی</label>
                                     <input
                                         className="w-full h-10  placeholder:absolute placeholder:bottom-2 placeholder:left-2 px-3 border text-left border-[#CBCBCB] rounded-lg text-sm leading-10 placeholder:text-[#CBCBCB] placeholder:text-sm"
                                         type="password"
-                                        placeholder="***********"
+                                        placeholder={profile.national_id ? profile.national_id : ""}
                                     />
                                 </div>
 
@@ -70,11 +146,11 @@ const AccountInfo = () => {
                             <div className='flex gap-6'>
                                 <div className='flex flex-col  text-[#CBCBCB] '>
                                     <label htmlFor="">تاریخ تولد</label>
-                                    <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="date" placeholder='۱۳۷۰/۰۱/۰۱' />
+                                    <input value={profile.birth_date} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="date" placeholder='\' />
                                 </div>
                                 <div className='flex flex-col  text-[#CBCBCB] '>
                                     <label htmlFor="">آدرس ایمیل</label>
-                                    <input className='text-left border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder='n.zamani@gmail.com' />
+                                    <input className='text-left border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder={profile.email} />
                                 </div>
 
                             </div>

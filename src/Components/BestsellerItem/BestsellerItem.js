@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-const BestsellerItem = ({img,title,text,heart}) => {
+const BestsellerItem = ({img,title,text,heart,price}) => {
       const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ const BestsellerItem = ({img,title,text,heart}) => {
             <img className="absolute left-0 top-0" src={heart} alt="" />
             </h4>
         <p>{text}</p>
-        <p className="text-left mt-8 font-bold text-xl">۱۵۰,۰۰۰ تومان</p>
+        <p className="text-left mt-8 font-bold text-xl">{price} تومان</p>
     </div>
   )
 }

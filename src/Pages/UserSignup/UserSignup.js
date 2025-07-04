@@ -1,12 +1,140 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../Components/Header/Header'
 import MyFooter from '../../Components/MyFooter/MyFooter'
 import callSvg from "../../Assets/Images/call.svg"
 import "./UserSignup.css"
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
-
+import axios from 'axios'
 const UserSignup = () => {
     const [nextState, setNextState] = useState(false)
+
+    const [myFav, setMyFav] = useState([]);
+    const [profile, setProfile] = useState({});
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+    const [national_id, setNational_id] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [phone, setPhone] = useState("");
+    const [birth, setBirth] = useState("");
+    const [city, setCity] = useState("");
+    const [province, setProvince] = useState("");
+    const [postal_code, setPostal_code] = useState("");
+    const [address, setAddress] = useState("");
+
+    const getprofile = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/api/accounts/profile/', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            console.log("✅ profile:", response.data);
+            // بقیه کدها مثل setState یا نمایش داده‌ها...
+            setProfile(response.data)
+        } catch (error) {
+            if (error.response) {
+                // خطاهایی که از سمت سرور اومدن (مثلاً 401، 403، 500)
+                console.error(`❌ Error ${error.response.status}:`, error.response.data);
+
+                if (error.response.status === 401) {
+                    // مثلاً بفرستش به صفحه لاگین یا پیام بده
+                    alert("دسترسی غیرمجاز. لطفاً دوباره لاگین کنید.");
+                }
+
+            } else if (error.request) {
+                // درخواست فرستاده شده ولی پاسخی نگرفتیم
+                console.error("❌ No response from server:", error.request);
+            } else {
+                // خطای مربوط به ساختار خود کد یا axios
+                console.error("❌ Request setup error:", error.message);
+            }
+        }
+    };
+
+    const getFavorites = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/api/accounts/favorites/', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            setMyFav(response.data)
+            console.log("✅ Favorites:", response.data);
+            // بقیه کدها مثل setState یا نمایش داده‌ها...
+
+        } catch (error) {
+            if (error.response) {
+                // خطاهایی که از سمت سرور اومدن (مثلاً 401، 403، 500)
+                console.error(`❌ Error ${error.response.status}:`, error.response.data);
+
+                if (error.response.status === 401) {
+                    // مثلاً بفرستش به صفحه لاگین یا پیام بده
+                    alert("دسترسی غیرمجاز. لطفاً دوباره لاگین کنید.");
+                }
+
+            } else if (error.request) {
+                // درخواست فرستاده شده ولی پاسخی نگرفتیم
+                console.error("❌ No response from server:", error.request);
+            } else {
+                // خطای مربوط به ساختار خود کد یا axios
+                console.error("❌ Request setup error:", error.message);
+            }
+        }
+    };
+
+    useEffect(() => {
+        getprofile()
+        getFavorites()
+
+    }, [])
+
+    const [name, setName] = useState("");
+
+
+    const submitData = async () => {
+        try {
+            const payload = {
+                firstName,
+                lastName,
+                national_id,
+                password,
+                email,
+                mobile,
+                phone,
+                birth,
+                city,
+                province,
+                postal_code,
+                address,
+            };
+
+            const response = await axios.post('http://localhost:8000/api/accounts/signup/', payload, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, // اگر نیاز داری
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('✅ Data sent successfully:', response.data);
+
+        } catch (error) {
+            if (error.response) {
+                console.error(`❌ Error ${error.response.status}:`, error.response.data);
+                alert("خطا در ارسال داده‌ها. لطفاً دوباره تلاش کنید.");
+            } else if (error.request) {
+                console.error("❌ No response from server:", error.request);
+                alert("پاسخی از سرور دریافت نشد.");
+            } else {
+                console.error("❌ Request setup error:", error.message);
+                alert("خطا در تنظیم درخواست.");
+            }
+        }
+    };
+
     return (
         <div className='flex flex-col min-h-screen font-iranyekan user-signup'>
             <Header />
@@ -49,12 +177,17 @@ const UserSignup = () => {
                                     <div className='flex flex-col gap-5'>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">شماره موبایل</label>
-                                            <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" placeholder='۰۹۱۲********' />
-                                        </div>
+                                            <input
+                                                value={mobile}
+                                                onChange={(e) => setMobile(e.target.value)}
+                                                className="border w-72 h-10 rounded-lg mt-2 py-1.5 px-2"
+                                                type="text"
+                                                placeholder="۰۹۱۲********"
+                                            />                                        </div>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">استان</label>
                                             <div className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2'>
-                                                <select name="" id="" className='w-full outline-none' >
+                                                <select onChange={(e) => setProvince(e.target.value)} name="" id="" className='w-full outline-none' >
                                                     <option value="تهران">تهران</option>
                                                     <option value="اصفهان">اصفهان</option>
                                                     <option value="کرمان">کرمان</option>
@@ -65,20 +198,25 @@ const UserSignup = () => {
                                         </div>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">کد پستی</label>
-                                            <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder='n.zamani@gmail.com' />
+                                            <input onChange={(e) => setPostal_code(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder='' />
                                         </div>
-                                      
+
 
                                     </div>
                                     <div className='flex flex-col gap-5'>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">شماره تلفن (همراه با کد شهر) </label>
-                                            <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" placeholder='۰۲۱۵۵۵۵۵۵۵۵' />
-                                        </div>
+                                            <input
+                                                value={phone}
+                                                onChange={(e) => setPhone(e.target.value)}
+                                                className="border w-72 h-10 rounded-lg mt-2 py-1.5 px-2"
+                                                type="text"
+                                                placeholder="۰۲۱۵۵۵۵۵۵۵۵"
+                                            />                                        </div>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">شهر</label>
                                             <div className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2'>
-                                                <select name="" id="" className='w-full outline-none' >
+                                                <select onChange={(e) => setCity(e.target.value)} name="" id="" className='w-full outline-none' >
                                                     <option value="تهران">تهران</option>
                                                     <option value="اصفهان">اصفهان</option>
                                                     <option value="کرمان">کرمان</option>
@@ -93,12 +231,17 @@ const UserSignup = () => {
                                 </div>
                                 <div className='flex flex-col gap-1 mt-6'>
                                     <label htmlFor="">آدرس  کامل  پستی (میتوانید از نقشه استفاه کنید)</label>
-                                    <input type="text" className='border py-1.5 px-2 rounded-lg' placeholder='تهران، خیابان ولیعصر، منطقه ۱۲، بلوار کاوه، کوچه ابوذر، پلاک ۱۵' />
-
+                                    <input
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        type="text"
+                                        className="border py-1.5 px-2 rounded-lg"
+                                        placeholder="تهران، خیابان ولیعصر، ..."
+                                    />
                                 </div>
 
                             </form>
-                            <button className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
+                            <button onClick={submitData} className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
                                 <p>ثبت  اطلاعات</p>
 
 
@@ -222,43 +365,37 @@ const UserSignup = () => {
                                     <div className='flex gap-6'>
                                         <div className='flex flex-col gap-5'>
                                             <div className='flex flex-col'>
-                                                <label htmlFor="">نام و نام خانوادگی </label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" placeholder='نگار زمانی' />
+                                                <label htmlFor="">  نام  </label>
+                                                <input onChange={(e) => setFirstName(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" />
                                             </div>
                                             <div className='flex flex-col'>
-                                                <label htmlFor="">تحصیلات (اختیاری)</label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" placeholder='نگار زمانی' />
+                                                <label htmlFor="">  نام خانوادگی </label>
+                                                <input onChange={(e) => setLastName(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" />
                                             </div>
+
                                             <div className='flex flex-col'>
                                                 <label htmlFor="">آدرس ایمیل</label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder='n.zamani@gmail.com' />
+                                                <input onChange={(e) => setEmail(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="email" placeholder='n.zamani@gmail.com' />
                                             </div>
                                             <div className='flex flex-col'>
                                                 <label htmlFor="">تاریخ تولد</label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="date" placeholder='۱۳۷۰/۰۱/۰۱' />
+                                                <input onChange={(e) => setBirth(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="date" placeholder='۱۳۷۰/۰۱/۰۱' />
                                             </div>
 
                                         </div>
                                         <div className='flex flex-col gap-5'>
                                             <div className='flex flex-col'>
                                                 <label htmlFor="">کد ملی</label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="text" placeholder='' />
-                                            </div>
+                                                <input
+                                                    value={national_id}
+                                                    onChange={(e) => setNational_id(e.target.value)}
+                                                    className="border w-72 h-10 rounded-lg mt-2 py-1.5 px-2"
+                                                    type="text"
+                                                />                                            </div>
+
                                             <div className='flex flex-col'>
-                                                <label htmlFor="">نام و نام خانوادگی </label>
-                                                <div className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2'>
-                                                    <select name="" id="" className='w-full outline-none' >
-                                                        <option value="تهران">تهران</option>
-                                                        <option value="اصفهان">اصفهان</option>
-                                                        <option value="کرمان">کرمان</option>
-                                                        <option value="شیراز">شیراز</option>
-                                                        <option value="ساری">ساری</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className='flex flex-col'>
-                                                <label htmlFor="">نام و نام خانوادگی </label>
-                                                <input className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="password" placeholder='************' />
+                                                <label htmlFor="">رمز عبور</label>
+                                                <input onChange={(e) => setPassword(e.target.value)} className='border w-72 h-10 rounded-lg mt-2 py-1.5 px-2' type="password" placeholder='************' />
                                             </div>
 
 
@@ -266,7 +403,7 @@ const UserSignup = () => {
                                     </div>
 
                                 </form>
-                                <button onClick={()=>setNextState(true)} className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
+                                <button onClick={() => setNextState(true)} className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
                                     <p>مرحله بعدی</p>
                                     <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.9993 17.6656C7.8093 17.6656 7.6193 17.5956 7.4693 17.4456L0.949297 10.9256C-0.110703 9.86563 -0.110703 8.12562 0.949297 7.06562L7.4693 0.545625C7.7593 0.255625 8.2393 0.255625 8.5293 0.545625C8.8193 0.835625 8.8193 1.31563 8.5293 1.60563L2.0093 8.12563C1.5293 8.60563 1.5293 9.38563 2.0093 9.86563L8.5293 16.3856C8.8193 16.6756 8.8193 17.1556 8.5293 17.4456C8.3793 17.5856 8.1893 17.6656 7.9993 17.6656Z" fill="white" />

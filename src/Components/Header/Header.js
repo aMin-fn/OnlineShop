@@ -22,7 +22,7 @@ const Header = () => {
           </div>
           <div className="login-signup flex items-center">
             <img className='w-6' src={LoginSvg} alt="" />
-            <Link className='font-medium text-[#434343] text-sm'>ورود | ثبت نام</Link>
+            <Link to={'/user-login'} className='font-medium text-[#434343] text-sm'>ورود | ثبت نام</Link>
           </div>
           <div className=" Shopping-cart flex items-center relative">
             <div>
