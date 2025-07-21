@@ -7,13 +7,15 @@ import BestsellerItem from '../../Components/BestsellerItem/BestsellerItem'
 import HeartImg from "../../Assets/Images/heart.png"
 import womenImg from "../../Assets/Images/women.png"
 import Item from '../../Components/Item/Item'
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 const UserProfile = () => {
     const [myFav, setMyFav] = useState([]);
-        const [profile, setProfile] = useState({});
+    const [profile, setProfile] = useState({});
 
-        const getprofile = async () => {
+    const getprofile = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/accounts/profile/', {
                 headers: {
@@ -78,26 +80,21 @@ const UserProfile = () => {
     useEffect(() => {
         getFavorites()
     }, [])
-
-    console.log(profile);
-    
-
-
-
+    const products = [0, 0, 0, 0, 0, 0, 0, 0];
     return (
         <div>
             <Header />
             <hr />
             <div className='max-w-[1224px] m-auto'>
                 <MyNavbar />
-                <h1 className='font-bold text-3xl my-5'>پروفایل</h1>
-                <div className='flex'>
+                <h1 className='hidden lg:block font-bold text-3xl my-5'>پروفایل</h1>
+                <div className='flex flex-col lg:flex-row'>
                     <Profile />
-                    <div className=' border border-solid border-[#EDEDED] rounded-2xl flex flex-col  w-[808px]  mr-6 ' >
+                    <div className=' border border-solid border-[#EDEDED] rounded-2xl flex flex-col  lg:w-[808px]  lg:mr-6 ' >
                         <div className='px-6'>
-                            <h1 className='font-bold text-2xl my-5'>سفارشات من </h1>
-                            <div className='flex'>
-                                <div className='flex-1'>
+                            <h1 className='font-bold text-lg lg:text-2xl my-5'>سفارشات من </h1>
+                            <div className='flex text-sm lg:text-base'>
+                                <div className='flex-1 '>
                                     <div className='flex justify-center'>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#B95962" />
@@ -105,7 +102,7 @@ const UserProfile = () => {
                                             <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
                                             <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
                                         </svg>
-                                        <div className='mr-2 w-[100px]'>
+                                        <div className='mr-2 lg:w-[100px]'>
                                             <p className='text-[#434343]'>۴۵ سفارش</p>
                                             <p className='text-xs text-[#434343]'>جاری</p>
                                         </div>
@@ -118,7 +115,35 @@ const UserProfile = () => {
                                             <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
                                             <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
                                         </svg>
-                                        <div className='mr-2 w-[100px]'>
+                                        <div className='mr-2 lg:w-[100px]'>
+                                            <p className='text-[#434343]'>۵۴ نظر</p>
+                                            <p className='text-xs text-[#434343]'>ثبت شده</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className='flex-1 lg:border-x border-solid border-[#EDEDED]'>
+                                    <div className='flex justify-center'>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#B95962" />
+                                            <path d="M12 13C11.44 13 11 12.55 11 12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12C13 12.55 12.56 13 12 13Z" fill="#B95962" />
+                                            <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
+                                            <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
+                                        </svg>
+                                        <div className='mr-2 lg:w-[100px]'>
+                                            <p className='text-[#434343]'>۴۵ سفارش</p>
+                                            <p className='text-xs text-[#434343]'>جاری</p>
+                                        </div>
+
+                                    </div>
+                                    <div className='flex justify-center mt-4 '>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#B95962" />
+                                            <path d="M12 13C11.44 13 11 12.55 11 12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12C13 12.55 12.56 13 12 13Z" fill="#B95962" />
+                                            <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
+                                            <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
+                                        </svg>
+                                        <div className='mr-2 lg:w-[100px]'>
                                             <p className='text-[#434343]'>۵۴ نظر</p>
                                             <p className='text-xs text-[#434343]'>ثبت شده</p>
                                         </div>
@@ -127,36 +152,6 @@ const UserProfile = () => {
 
                                 </div>
 
-                                <div className='flex-1 border-x border-solid border-[#EDEDED]'>
-                                    <div className='flex justify-center'>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#B95962" />
-                                            <path d="M12 13C11.44 13 11 12.55 11 12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12C13 12.55 12.56 13 12 13Z" fill="#B95962" />
-                                            <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
-                                            <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
-                                        </svg>
-                                        <div className='mr-2 w-[100px]'>
-                                            <p className='text-[#434343]'>۴۵ سفارش</p>
-                                            <p className='text-xs text-[#434343]'>جاری</p>
-                                        </div>
-
-                                    </div>
-                                    <div className='flex justify-center mt-4 '>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#B95962" />
-                                            <path d="M12 13C11.44 13 11 12.55 11 12C11 11.45 11.45 11 12 11C12.55 11 13 11.45 13 12C13 12.55 12.56 13 12 13Z" fill="#B95962" />
-                                            <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
-                                            <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
-                                        </svg>
-                                        <div className='mr-2 w-[100px]'>
-                                            <p className='text-[#434343]'>۵۴ نظر</p>
-                                            <p className='text-xs text-[#434343]'>ثبت شده</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
                                 <div className='flex-1'>
                                     <div className='flex justify-center'>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +160,7 @@ const UserProfile = () => {
                                             <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
                                             <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
                                         </svg>
-                                        <div className='mr-2 w-[100px]'>
+                                        <div className='mr-2 lg:w-[100px]'>
                                             <p className='text-[#434343]'>۴۵ سفارش</p>
                                             <p className='text-xs text-[#434343]'>جاری</p>
                                         </div>
@@ -178,7 +173,7 @@ const UserProfile = () => {
                                             <path d="M16 13C15.44 13 15 12.55 15 12C15 11.45 15.45 11 16 11C16.55 11 17 11.45 17 12C17 12.55 16.56 13 16 13Z" fill="#B95962" />
                                             <path d="M8 13C7.44 13 7 12.55 7 12C7 11.45 7.45 11 8 11C8.55 11 9 11.45 9 12C9 12.55 8.56 13 8 13Z" fill="#B95962" />
                                         </svg>
-                                        <div className='mr-2 w-[100px]'>
+                                        <div className='mr-2 lg:w-[100px]'>
                                             <p className='text-[#434343]'>۵۴ نظر</p>
                                             <p className='text-xs text-[#434343]'>ثبت شده</p>
                                         </div>
@@ -194,47 +189,73 @@ const UserProfile = () => {
                         <hr className='mt-4' />
                         <div className='pr-6'>
                             <div className='flex justify-between items-center px-6 '>
-                                <h1 className='font-bold text-2xl my-5'>علاقه مندی های من</h1>
-                                <a className='text-baseRed' href="">مشاهده بیشتر</a>
+                                <h1 className='font-bold text-sm lg:text-2xl my-5'>علاقه مندی های من</h1>
+                                <a className='text-baseRed text-sm lg:text-base' href="">مشاهده بیشتر</a>
                             </div>
                             <div className='flex gap-6 z-0 relative '>
-                                {myFav.map((item) => {
-                                    return (
-                                        <BestsellerItem img={item.image_url} text={item.description} title={item.name} heart={HeartImg} price={item.price} ></BestsellerItem>
+                                <Swiper
+                                    spaceBetween={10}
+                                    slidesPerView={2.25}
+                                >
+                                    {products.map((item) => {
+                                        return (
+                                            <SwiperSlide>                                            <BestsellerItem img={womenImg} title="کیف زنانه" text="دارای رنگ بندی، قابل طراحی" heart={HeartImg} ></BestsellerItem>
 
-                                    )
+                                            </SwiperSlide>
+                                        )
+                                    })}
 
-                                })}
-                                <div className='absolute bottom-[45%] -left-5 z-10 border-2 border-solid border-[#86262F] rounded-full w-10 h-10 flex justify-center items-center '>
-                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="#86262F" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#86262F"></path> </g></svg>
-                                </div>
-                            </div>
-                            <hr className='mt-6' />
+                                </Swiper>
 
-                        </div>
-                        <div className='pr-6'>
-                            <div className='flex justify-between items-center px-6'>
-                                <h1 className='font-bold text-2xl my-5'>گالری من</h1>
-                                <a className='text-baseRed' href="">مشاهده بیشتر</a>
-                            </div>
-                            <div className='flex overflow-auto gap-6'>
-                                <BestsellerItem img={womenImg} title="کیف زنانه" text="دارای رنگ بندی، قابل طراحی" heart={HeartImg} ></BestsellerItem>
-                                <BestsellerItem img={womenImg} title="کیف زنانه" text="دارای رنگ بندی، قابل طراحی" heart={HeartImg} ></BestsellerItem>
-                                <BestsellerItem img={womenImg} title="کیف زنانه" text="دارای رنگ بندی، قابل طراحی" heart={HeartImg} ></BestsellerItem>
 
                             </div>
                             <hr className='mt-6' />
 
                         </div>
                         <div className='pr-6'>
-                            <div className='flex justify-between items-center px-6'>
-                                <h1 className='font-bold text-2xl my-5'>خرید های پرتکرار من </h1>
-                                <a className='text-baseRed' href="">مشاهده بیشتر</a>
+                            <div className='flex justify-between items-center px-6 '>
+                                <h1 className='font-bold text-sm lg:text-2xl my-5'>گالری   من</h1>
+                                <a className='text-baseRed text-sm lg:text-base' href="">مشاهده بیشتر</a>
                             </div>
-                            <div className='flex overflow-hidden gap-6'>
-                                <Item />
-                                <Item />
-                                <Item />
+                            <div className='flex gap-6 z-0 relative '>
+                                <Swiper
+                                    spaceBetween={10}
+                                    slidesPerView={2.25}
+                                >
+                                    {products.map((item) => {
+                                        return (
+                                            <SwiperSlide>
+                                                <Item />
+                                            </SwiperSlide>
+                                        )
+                                    })}
+
+                                </Swiper>
+
+
+                            </div>
+                            <hr className='mt-6' />
+
+                        </div>
+                        <div className='pr-6'>
+                            <div className='flex justify-between items-center px-6 '>
+                                <h1 className='font-bold text-sm lg:text-2xl my-5'>خرید های پرتکرار   من</h1>
+                                <a className='text-baseRed text-sm lg:text-base' href="">مشاهده بیشتر</a>
+                            </div>
+                            <div className='flex gap-6 z-0 relative '>
+                                <Swiper
+                                    spaceBetween={10}
+                                    slidesPerView={2.25}
+                                >
+                                    {products.map((item) => {
+                                        return (
+                                            <SwiperSlide>                                            <BestsellerItem img={womenImg} title="کیف زنانه" text="دارای رنگ بندی، قابل طراحی" heart={HeartImg} ></BestsellerItem>
+
+                                            </SwiperSlide>
+                                        )
+                                    })}
+
+                                </Swiper>
 
 
                             </div>
@@ -248,7 +269,49 @@ const UserProfile = () => {
                 </div>
 
             </div>
-            <MyFooter />
+            <div className="bg-baseRed lg:hidden flex justify-evenly py-6 text-white text-xs font-light fixed bottom-0 z-30 w-full ">
+                <Link to={"/"} className="flex flex-col items-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V15C11.25 14.59 11.59 14.25 12 14.25C12.41 14.25 12.75 14.59 12.75 15V18C12.75 18.41 12.41 18.75 12 18.75Z" fill="#CBCBCB" />
+                        <path d="M17.6 22.5601H6.39996C4.57996 22.5601 2.91996 21.1601 2.61996 19.3701L1.28996 11.4001C1.06996 10.1601 1.67996 8.57007 2.66996 7.78007L9.59996 2.23007C10.94 1.15007 13.05 1.16007 14.4 2.24007L21.33 7.78007C22.31 8.57007 22.91 10.1601 22.71 11.4001L21.38 19.3601C21.08 21.1301 19.38 22.5601 17.6 22.5601ZM11.99 2.93007C11.46 2.93007 10.93 3.09007 10.54 3.40007L3.60996 8.96007C3.04996 9.41007 2.64996 10.4501 2.76996 11.1601L4.09996 19.1201C4.27996 20.1701 5.32996 21.0601 6.39996 21.0601H17.6C18.67 21.0601 19.72 20.1701 19.9 19.1101L21.23 11.1501C21.34 10.4501 20.94 9.39007 20.39 8.95007L13.46 3.41007C13.06 3.09007 12.52 2.93007 11.99 2.93007Z" fill="#CBCBCB" />
+                    </svg>
+
+                    <p className='text-white'>خانه</p>
+                </Link>
+                <Link to={""} className="flex flex-col items-center">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.9299 18.3699C10.7799 18.3699 10.6399 18.3299 10.5099 18.2399C10.2999 18.0999 10.1799 17.8699 10.1799 17.6199C10.1799 17.4699 10.1699 17.3099 10.1499 17.1499C10.0599 16.4399 9.73991 15.8199 9.19991 15.2799C8.65991 14.7399 7.98991 14.3999 7.26991 14.3099C7.14991 14.2999 6.97991 14.2899 6.81991 14.2999C6.55991 14.3199 6.31991 14.2099 6.16991 13.9999C6.01991 13.7999 5.97991 13.5299 6.05991 13.2899C6.20991 12.8799 6.42991 12.5099 6.68991 12.2099L8.22991 10.2699C10.8799 6.95992 16.2499 2.97992 20.1799 1.39992C21.0199 1.07992 21.8999 1.26992 22.5099 1.86992C23.1399 2.49992 23.3299 3.39992 22.9999 4.21992C21.4199 8.15992 17.4499 13.5199 14.1399 16.1699L12.1699 17.7499C11.7999 18.0199 11.4999 18.1899 11.1999 18.3099C11.1199 18.3499 11.0199 18.3699 10.9299 18.3699ZM8.03991 12.9399C8.87991 13.1599 9.62991 13.5999 10.2599 14.2299C10.8899 14.8499 11.3099 15.5699 11.5199 16.3699L13.2099 15.0099C16.3499 12.4999 20.1199 7.40992 21.6099 3.66992C21.7599 3.29992 21.5499 3.03992 21.4499 2.94992C21.3799 2.87992 21.1199 2.65992 20.7199 2.80992C16.9999 4.30992 11.9099 8.07992 9.38991 11.2199L8.03991 12.9399Z" fill="#CBCBCB" />
+                        <path d="M4.58035 22.7501C3.83035 22.7501 3.11035 22.4501 2.57035 21.9101C1.95035 21.2901 1.65035 20.4301 1.75035 19.5501L2.02035 17.0901C2.28035 14.6501 4.28035 12.8401 6.76035 12.7901C6.95036 12.7801 7.20035 12.7901 7.43035 12.8101C8.52035 12.9501 9.49036 13.4401 10.2704 14.2201C11.0404 14.9901 11.5004 15.9101 11.6404 16.9401C11.6704 17.1601 11.6904 17.4001 11.6904 17.6101C11.6904 18.9301 11.1804 20.1601 10.2604 21.0901C9.49036 21.8501 8.50035 22.3201 7.38035 22.4601L4.91035 22.7301C4.80035 22.7401 4.69035 22.7501 4.58035 22.7501ZM6.95035 14.3001C6.91035 14.3001 6.86035 14.3001 6.82035 14.3001C5.31035 14.3301 3.71035 15.3601 3.51035 17.2601L3.24035 19.7201C3.19035 20.1401 3.34035 20.5501 3.63035 20.8501C3.92035 21.1401 4.33035 21.2901 4.74035 21.2401L7.20035 20.9701C7.97035 20.8701 8.66036 20.5501 9.18036 20.0301C9.82036 19.3901 10.1804 18.5301 10.1804 17.6101C10.1804 17.4601 10.1704 17.3001 10.1504 17.1401C10.0604 16.4301 9.74035 15.8101 9.20035 15.2701C8.66035 14.7301 7.99035 14.3901 7.27035 14.3001C7.19035 14.3001 7.07035 14.3001 6.95035 14.3001Z" fill="#CBCBCB" />
+                        <path d="M14.7398 15.2202C14.3298 15.2202 13.9898 14.8802 13.9898 14.4702C13.9898 12.2702 12.1998 10.4902 10.0098 10.4902C9.59977 10.4902 9.25977 10.1502 9.25977 9.74023C9.25977 9.33023 9.58977 8.99023 9.99977 8.99023C13.0198 8.99023 15.4798 11.4502 15.4798 14.4702C15.4898 14.8902 15.1498 15.2202 14.7398 15.2202Z" fill="#CBCBCB" />
+                        <path d="M16.1804 22.7297C15.2504 22.7297 14.3204 22.2897 13.4304 21.3997C13.1404 21.1097 13.1404 20.6297 13.4304 20.3397C13.7204 20.0497 14.2004 20.0497 14.4904 20.3397C15.6704 21.5197 16.6804 21.5197 17.8604 20.3397L20.8204 17.3797C22.0104 16.1897 22.0104 15.1797 20.8204 13.9997L20.0804 13.2697C19.7904 12.9797 19.7804 12.4997 20.0704 12.2097C20.3604 11.9097 20.8404 11.9097 21.1304 12.1997L21.8704 12.9297C23.6504 14.7097 23.6504 16.6597 21.8704 18.4397L18.9104 21.3997C18.0404 22.2797 17.1104 22.7297 16.1804 22.7297Z" fill="#CBCBCB" />
+                        <path d="M3.60977 11.2598C3.41977 11.2598 3.21977 11.1898 3.07977 11.0398C1.31977 9.26977 1.31977 7.30977 3.07977 5.53977L6.03977 2.57977C7.79977 0.819766 9.77977 0.819766 11.5398 2.57977L12.2798 3.31977C12.5698 3.60977 12.5698 4.08977 12.2798 4.37977C11.9898 4.66977 11.5098 4.66977 11.2198 4.37977L10.4698 3.63977C9.28977 2.45977 8.26977 2.45977 7.09977 3.63977L4.13977 6.59977C2.95977 7.78977 2.95977 8.79977 4.13977 9.98977C4.42977 10.2798 4.42977 10.7598 4.13977 11.0498C3.98977 11.1898 3.79977 11.2598 3.60977 11.2598Z" fill="#CBCBCB" />
+                        <path d="M8.05023 8.30004C7.86023 8.30004 7.67023 8.23004 7.52023 8.08004C7.23023 7.79004 7.23023 7.31004 7.52023 7.02004L11.2202 3.32004C11.5102 3.03004 11.9902 3.03004 12.2802 3.32004C12.5702 3.61004 12.5702 4.09004 12.2802 4.38004L8.58023 8.08004C8.43023 8.23004 8.24023 8.30004 8.05023 8.30004Z" fill="#CBCBCB" />
+                        <path d="M17.6596 16.4302C17.4696 16.4302 17.2796 16.3602 17.1296 16.2102C16.8396 15.9202 16.8396 15.4402 17.1296 15.1502L20.0896 12.1902C20.3796 11.9002 20.8596 11.9002 21.1496 12.1902C21.4396 12.4802 21.4396 12.9602 21.1496 13.2502L18.1896 16.2102C18.0496 16.3602 17.8596 16.4302 17.6596 16.4302Z" fill="#CBCBCB" />
+                    </svg>
+
+                    <p>طراحی سفارشی</p>
+                </Link>
+                <Link to={""} className="flex  flex-col items-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.19 17.75H7.53999C6.54999 17.75 5.59999 17.33 4.92999 16.6C4.25999 15.87 3.92 14.89 4 13.9L4.83 3.94C4.86 3.63 4.74999 3.33001 4.53999 3.10001C4.32999 2.87001 4.04 2.75 3.73 2.75H2C1.59 2.75 1.25 2.41 1.25 2C1.25 1.59 1.59 1.25 2 1.25H3.74001C4.47001 1.25 5.15999 1.56 5.64999 2.09C5.91999 2.39 6.12 2.74 6.23 3.13H18.72C19.73 3.13 20.66 3.53 21.34 4.25C22.01 4.98 22.35 5.93 22.27 6.94L21.73 14.44C21.62 16.27 20.02 17.75 18.19 17.75ZM6.28 4.62L5.5 14.02C5.45 14.6 5.64 15.15 6.03 15.58C6.42 16.01 6.95999 16.24 7.53999 16.24H18.19C19.23 16.24 20.17 15.36 20.25 14.32L20.79 6.82001C20.83 6.23001 20.64 5.67001 20.25 5.26001C19.86 4.84001 19.32 4.60999 18.73 4.60999H6.28V4.62Z" fill="#CBCBCB" />
+                        <path d="M16.25 22.75C15.15 22.75 14.25 21.85 14.25 20.75C14.25 19.65 15.15 18.75 16.25 18.75C17.35 18.75 18.25 19.65 18.25 20.75C18.25 21.85 17.35 22.75 16.25 22.75ZM16.25 20.25C15.97 20.25 15.75 20.47 15.75 20.75C15.75 21.03 15.97 21.25 16.25 21.25C16.53 21.25 16.75 21.03 16.75 20.75C16.75 20.47 16.53 20.25 16.25 20.25Z" fill="#CBCBCB" />
+                        <path d="M8.25 22.75C7.15 22.75 6.25 21.85 6.25 20.75C6.25 19.65 7.15 18.75 8.25 18.75C9.35 18.75 10.25 19.65 10.25 20.75C10.25 21.85 9.35 22.75 8.25 22.75ZM8.25 20.25C7.97 20.25 7.75 20.47 7.75 20.75C7.75 21.03 7.97 21.25 8.25 21.25C8.53 21.25 8.75 21.03 8.75 20.75C8.75 20.47 8.53 20.25 8.25 20.25Z" fill="#CBCBCB" />
+                        <path d="M21 8.75H9C8.59 8.75 8.25 8.41 8.25 8C8.25 7.59 8.59 7.25 9 7.25H21C21.41 7.25 21.75 7.59 21.75 8C21.75 8.41 21.41 8.75 21 8.75Z" fill="#CBCBCB" />
+                    </svg>
+                    <p className='text-white'>سبد خرید</p>
+                </Link>
+                <Link to={"/user-profile"} className="flex flex-col items-center">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12Z" fill="white" />
+                        <path d="M12.5002 14.5C7.49016 14.5 3.41016 17.86 3.41016 22C3.41016 22.28 3.63016 22.5 3.91016 22.5H21.0902C21.3702 22.5 21.5902 22.28 21.5902 22C21.5902 17.86 17.5102 14.5 12.5002 14.5Z" fill="white" />
+                    </svg>
+
+                    <p>پروفایل</p>
+                </Link>
+            </div>
+            <div className='hidden lg:block'>
+                <MyFooter />
+            </div>
 
         </div>
     )

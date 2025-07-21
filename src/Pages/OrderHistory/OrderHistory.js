@@ -15,7 +15,7 @@ const OrderHistory = () => {
         <div>
             <Header />
             <hr />
-            <div className='max-w-[1224px] m-auto'>
+            <div className='max-w-[1224px] m-auto order-history'>
                 <MyNavbar />
                 <h1 className='font-bold text-3xl my-5'>پروفایل</h1>
                 <div className='flex gap-6'>

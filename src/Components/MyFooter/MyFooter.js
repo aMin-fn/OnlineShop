@@ -1,81 +1,137 @@
 import PinterestSvg from "../../Assets/Images/Pinterest svg.svg"
 import FooterImg from "../../Assets/Images/01.png"
+import { Link, NavLink } from "react-router-dom"
 const MyFooter = () => {
   return (
-    <div className="mt-14 h-[536px] font-iranyekan">
-      <div className="top bg-[#641C23] w-full ">
-        <div className="max-w-[1224px] flex justify-between m-auto items-center h-[180px]  ">
-          <div className="right">
-            <p className="font-normal text-sm text-white">برای دریافت آخرین اخبار و تخفیف های جدید،ایمیل خود را وارد نمایید</p>
-            <input type="text" placeholder="ایمیل شما" className="text-white py-[6px] px-2 w-[392px] h-10 bg-transparent border border-solid border-white rounded-lg mt-1 ml-3" />
-            <button type="button" className="py-2 px-6 bg-baseRed rounded-lg text-white ">ثبت</button>
+    <>
+      <div className="hidden lg:block mt-14 h-[536px] font-iranyekan">
+        <div className="top hidden lg:block bg-[#641C23] w-full ">
+          <div className="max-w-[1224px] flex justify-between m-auto items-center h-[180px]  ">
+            <div className="right">
+              <p className="font-normal text-sm text-white">برای دریافت آخرین اخبار و تخفیف های جدید،ایمیل خود را وارد نمایید</p>
+              <input type="text" placeholder="ایمیل شما" className="text-white py-[6px] px-2 w-[392px] h-10 bg-transparent border border-solid border-white rounded-lg mt-1 ml-3" />
+              <button type="button" className="py-2 px-6 bg-baseRed rounded-lg text-white ">ثبت</button>
+            </div>
+            <div className="left h-20 ml-20 ">
+              <p className="text-sm font-normal text-white">ما را در شبکه های اجتماعی دنبال کنید</p>
+              <div className="flex justify-evenly mt-6">
+                <img src={PinterestSvg} alt="" />
+                <img src={PinterestSvg} alt="" />
+                <img src={PinterestSvg} alt="" />
+                <img src={PinterestSvg} alt="" />
+              </div>
+            </div>
           </div>
-          <div className="left h-20 ml-20 ">
-            <p className="text-sm font-normal text-white">ما را در شبکه های اجتماعی دنبال کنید</p>
-            <div className="flex justify-evenly mt-6">
-              <img src={PinterestSvg} alt="" />
-              <img src={PinterestSvg} alt="" />
-              <img src={PinterestSvg} alt="" />
-              <img src={PinterestSvg} alt="" />
+        </div>
+        <div className="bg-baseRed bottom  w-full   ">
+          <div className="flex max-w-[1224px] h-[356px] m-auto items-center justify-between ">
+            <div className="right flex h-[228px] w-[696px] justify-between text-white font-normal text-sm p-2">
+              <div>
+                <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
+                <ul className="flex flex-col gap-5 mt-6">
+                  <li><a href="">فروش محصولات</a></li>
+                  <li><a href="">فرصت همکاری</a></li>
+                  <li><a href="">تماس با ما </a></li>
+                  <li><a href="">نقشه سایت</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
+                <ul className="flex flex-col gap-5 mt-6">
+                  <li><a href="">فروش محصولات</a></li>
+                  <li><a href="">فرصت همکاری</a></li>
+                  <li><a href="">تماس با ما </a></li>
+                  <li><a href="">نقشه سایت</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
+                <ul className="flex flex-col gap-5 mt-6">
+                  <li><a href="">فروش محصولات</a></li>
+                  <li><a href="">فرصت همکاری</a></li>
+                  <li><a href="">تماس با ما </a></li>
+                  <li><a href="">نقشه سایت</a></li>
+                </ul>
+              </div>
+
+
+            </div>
+            <div className="left  text-white text-center  ">
+              <div className="title">
+                <h6 className="font-bold text-lg">فروشگاه اینترنتی کاستومی</h6>
+              </div>
+              <div className="text text-xs font-normal flex justify-between gap-8 mt-[41px] mb-[72px]">
+                <div className="right flex gap-4">
+                  <p > تماس با پشتیبانی : </p>
+                  <p> ۰۲۱-۳۴۵۶۰۰۰ </p>
+                </div>
+                <div className="left">
+                  <p>پاسخگویی ۲۴ ساعته ، ۷ روز هفته </p>
+                </div>
+              </div>
+              <div className="imgs flex gap-8 justify-center">
+                <img src={FooterImg} alt="" />
+                <img src={FooterImg} alt="" />
+                <img src={FooterImg} alt="" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-baseRed bottom  w-full   ">
-        <div className="flex max-w-[1224px] h-[356px] m-auto items-center justify-between ">
-          <div className="right flex h-[228px] w-[696px] justify-between text-white font-normal text-sm p-2">
-            <div>
-              <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
-              <ul className="flex flex-col gap-5 mt-6">
-                <li><a href="">فروش محصولات</a></li>
-                <li><a href="">فرصت همکاری</a></li>
-                <li><a href="">تماس با ما </a></li>
-                <li><a href="">نقشه سایت</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
-              <ul className="flex flex-col gap-5 mt-6">
-                <li><a href="">فروش محصولات</a></li>
-                <li><a href="">فرصت همکاری</a></li>
-                <li><a href="">تماس با ما </a></li>
-                <li><a href="">نقشه سایت</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="underline underline-offset-8 decoration-white font-bold">همراه با کاستومی</p>
-              <ul className="flex flex-col gap-5 mt-6">
-                <li><a href="">فروش محصولات</a></li>
-                <li><a href="">فرصت همکاری</a></li>
-                <li><a href="">تماس با ما </a></li>
-                <li><a href="">نقشه سایت</a></li>
-              </ul>
-            </div>
-
-
+      <div className="lg:hidden">
+        <div className="bg-[#641C23] text-white text-xs font-light text-center p-5">
+          <p>تماس با پشتیبانی :  ۰۲۱-۳۴۵۶۰۰۰</p>
+          <p className="mt-4">پاسخگویی ۲۴ ساعته ، ۷ روز هفته </p>
+          <div className="flex justify-evenly mt-6 mb-4">
+            <img src={PinterestSvg} alt="" />
+            <img src={PinterestSvg} alt="" />
+            <img src={PinterestSvg} alt="" />
+            <img src={PinterestSvg} alt="" />
           </div>
-          <div className="left  text-white text-center  ">
-            <div className="title">
-              <h6 className="font-bold text-lg">فروشگاه اینترنتی کاستومی</h6>
-            </div>
-            <div className="text text-xs font-normal flex justify-between gap-8 mt-[41px] mb-[72px]">
-              <div className="right flex gap-4">
-                <p > تماس با پشتیبانی : </p>
-                <p> ۰۲۱-۳۴۵۶۰۰۰ </p>
-              </div>
-              <div className="left">
-                <p>پاسخگویی ۲۴ ساعته ، ۷ روز هفته </p>
-              </div>
-            </div>
-            <div className="imgs flex gap-8 justify-center">
-              <img src={FooterImg} alt="" />
-              <img src={FooterImg} alt="" />
-              <img src={FooterImg} alt="" />
-            </div>
-          </div>
+          <p>تمام حقوق این وبسایت متعلق به فروشگاه آنلاین کاستومی می باشد</p>
         </div>
+        <div className="bg-baseRed flex justify-evenly py-6 text-white text-xs font-light fixed bottom-0 z-30 w-full">
+          <NavLink to={"/"} className="flex flex-col items-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.0402 6.81969L14.2802 2.78969C12.7102 1.68969 10.3002 1.74969 8.79023 2.91969L3.78023 6.82969C2.78023 7.60969 1.99023 9.20969 1.99023 10.4697V17.3697C1.99023 19.9197 4.06023 21.9997 6.61023 21.9997H17.3902C19.9402 21.9997 22.0102 19.9297 22.0102 17.3797V10.5997C22.0102 9.24969 21.1402 7.58969 20.0402 6.81969ZM12.7502 17.9997C12.7502 18.4097 12.4102 18.7497 12.0002 18.7497C11.5902 18.7497 11.2502 18.4097 11.2502 17.9997V14.9997C11.2502 14.5897 11.5902 14.2497 12.0002 14.2497C12.4102 14.2497 12.7502 14.5897 12.7502 14.9997V17.9997Z" fill="white" />
+            </svg>
+            <p>خانه</p>
+          </NavLink>
+          <NavLink to={""} className="flex flex-col items-center">
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.9299 18.3699C10.7799 18.3699 10.6399 18.3299 10.5099 18.2399C10.2999 18.0999 10.1799 17.8699 10.1799 17.6199C10.1799 17.4699 10.1699 17.3099 10.1499 17.1499C10.0599 16.4399 9.73991 15.8199 9.19991 15.2799C8.65991 14.7399 7.98991 14.3999 7.26991 14.3099C7.14991 14.2999 6.97991 14.2899 6.81991 14.2999C6.55991 14.3199 6.31991 14.2099 6.16991 13.9999C6.01991 13.7999 5.97991 13.5299 6.05991 13.2899C6.20991 12.8799 6.42991 12.5099 6.68991 12.2099L8.22991 10.2699C10.8799 6.95992 16.2499 2.97992 20.1799 1.39992C21.0199 1.07992 21.8999 1.26992 22.5099 1.86992C23.1399 2.49992 23.3299 3.39992 22.9999 4.21992C21.4199 8.15992 17.4499 13.5199 14.1399 16.1699L12.1699 17.7499C11.7999 18.0199 11.4999 18.1899 11.1999 18.3099C11.1199 18.3499 11.0199 18.3699 10.9299 18.3699ZM8.03991 12.9399C8.87991 13.1599 9.62991 13.5999 10.2599 14.2299C10.8899 14.8499 11.3099 15.5699 11.5199 16.3699L13.2099 15.0099C16.3499 12.4999 20.1199 7.40992 21.6099 3.66992C21.7599 3.29992 21.5499 3.03992 21.4499 2.94992C21.3799 2.87992 21.1199 2.65992 20.7199 2.80992C16.9999 4.30992 11.9099 8.07992 9.38991 11.2199L8.03991 12.9399Z" fill="#CBCBCB" />
+              <path d="M4.58035 22.7501C3.83035 22.7501 3.11035 22.4501 2.57035 21.9101C1.95035 21.2901 1.65035 20.4301 1.75035 19.5501L2.02035 17.0901C2.28035 14.6501 4.28035 12.8401 6.76035 12.7901C6.95036 12.7801 7.20035 12.7901 7.43035 12.8101C8.52035 12.9501 9.49036 13.4401 10.2704 14.2201C11.0404 14.9901 11.5004 15.9101 11.6404 16.9401C11.6704 17.1601 11.6904 17.4001 11.6904 17.6101C11.6904 18.9301 11.1804 20.1601 10.2604 21.0901C9.49036 21.8501 8.50035 22.3201 7.38035 22.4601L4.91035 22.7301C4.80035 22.7401 4.69035 22.7501 4.58035 22.7501ZM6.95035 14.3001C6.91035 14.3001 6.86035 14.3001 6.82035 14.3001C5.31035 14.3301 3.71035 15.3601 3.51035 17.2601L3.24035 19.7201C3.19035 20.1401 3.34035 20.5501 3.63035 20.8501C3.92035 21.1401 4.33035 21.2901 4.74035 21.2401L7.20035 20.9701C7.97035 20.8701 8.66036 20.5501 9.18036 20.0301C9.82036 19.3901 10.1804 18.5301 10.1804 17.6101C10.1804 17.4601 10.1704 17.3001 10.1504 17.1401C10.0604 16.4301 9.74035 15.8101 9.20035 15.2701C8.66035 14.7301 7.99035 14.3901 7.27035 14.3001C7.19035 14.3001 7.07035 14.3001 6.95035 14.3001Z" fill="#CBCBCB" />
+              <path d="M14.7398 15.2202C14.3298 15.2202 13.9898 14.8802 13.9898 14.4702C13.9898 12.2702 12.1998 10.4902 10.0098 10.4902C9.59977 10.4902 9.25977 10.1502 9.25977 9.74023C9.25977 9.33023 9.58977 8.99023 9.99977 8.99023C13.0198 8.99023 15.4798 11.4502 15.4798 14.4702C15.4898 14.8902 15.1498 15.2202 14.7398 15.2202Z" fill="#CBCBCB" />
+              <path d="M16.1804 22.7297C15.2504 22.7297 14.3204 22.2897 13.4304 21.3997C13.1404 21.1097 13.1404 20.6297 13.4304 20.3397C13.7204 20.0497 14.2004 20.0497 14.4904 20.3397C15.6704 21.5197 16.6804 21.5197 17.8604 20.3397L20.8204 17.3797C22.0104 16.1897 22.0104 15.1797 20.8204 13.9997L20.0804 13.2697C19.7904 12.9797 19.7804 12.4997 20.0704 12.2097C20.3604 11.9097 20.8404 11.9097 21.1304 12.1997L21.8704 12.9297C23.6504 14.7097 23.6504 16.6597 21.8704 18.4397L18.9104 21.3997C18.0404 22.2797 17.1104 22.7297 16.1804 22.7297Z" fill="#CBCBCB" />
+              <path d="M3.60977 11.2598C3.41977 11.2598 3.21977 11.1898 3.07977 11.0398C1.31977 9.26977 1.31977 7.30977 3.07977 5.53977L6.03977 2.57977C7.79977 0.819766 9.77977 0.819766 11.5398 2.57977L12.2798 3.31977C12.5698 3.60977 12.5698 4.08977 12.2798 4.37977C11.9898 4.66977 11.5098 4.66977 11.2198 4.37977L10.4698 3.63977C9.28977 2.45977 8.26977 2.45977 7.09977 3.63977L4.13977 6.59977C2.95977 7.78977 2.95977 8.79977 4.13977 9.98977C4.42977 10.2798 4.42977 10.7598 4.13977 11.0498C3.98977 11.1898 3.79977 11.2598 3.60977 11.2598Z" fill="#CBCBCB" />
+              <path d="M8.05023 8.30004C7.86023 8.30004 7.67023 8.23004 7.52023 8.08004C7.23023 7.79004 7.23023 7.31004 7.52023 7.02004L11.2202 3.32004C11.5102 3.03004 11.9902 3.03004 12.2802 3.32004C12.5702 3.61004 12.5702 4.09004 12.2802 4.38004L8.58023 8.08004C8.43023 8.23004 8.24023 8.30004 8.05023 8.30004Z" fill="#CBCBCB" />
+              <path d="M17.6596 16.4302C17.4696 16.4302 17.2796 16.3602 17.1296 16.2102C16.8396 15.9202 16.8396 15.4402 17.1296 15.1502L20.0896 12.1902C20.3796 11.9002 20.8596 11.9002 21.1496 12.1902C21.4396 12.4802 21.4396 12.9602 21.1496 13.2502L18.1896 16.2102C18.0496 16.3602 17.8596 16.4302 17.6596 16.4302Z" fill="#CBCBCB" />
+            </svg>
+
+            <p>طراحی سفارشی</p>
+          </NavLink>
+          <NavLink to={"/shopping"} className="flex flex-col items-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.19 17.75H7.53999C6.54999 17.75 5.59999 17.33 4.92999 16.6C4.25999 15.87 3.92 14.89 4 13.9L4.83 3.94C4.86 3.63 4.74999 3.33001 4.53999 3.10001C4.32999 2.87001 4.04 2.75 3.73 2.75H2C1.59 2.75 1.25 2.41 1.25 2C1.25 1.59 1.59 1.25 2 1.25H3.74001C4.47001 1.25 5.15999 1.56 5.64999 2.09C5.91999 2.39 6.12 2.74 6.23 3.13H18.72C19.73 3.13 20.66 3.53 21.34 4.25C22.01 4.98 22.35 5.93 22.27 6.94L21.73 14.44C21.62 16.27 20.02 17.75 18.19 17.75ZM6.28 4.62L5.5 14.02C5.45 14.6 5.64 15.15 6.03 15.58C6.42 16.01 6.95999 16.24 7.53999 16.24H18.19C19.23 16.24 20.17 15.36 20.25 14.32L20.79 6.82001C20.83 6.23001 20.64 5.67001 20.25 5.26001C19.86 4.84001 19.32 4.60999 18.73 4.60999H6.28V4.62Z" fill="#CBCBCB" />
+              <path d="M16.25 22.75C15.15 22.75 14.25 21.85 14.25 20.75C14.25 19.65 15.15 18.75 16.25 18.75C17.35 18.75 18.25 19.65 18.25 20.75C18.25 21.85 17.35 22.75 16.25 22.75ZM16.25 20.25C15.97 20.25 15.75 20.47 15.75 20.75C15.75 21.03 15.97 21.25 16.25 21.25C16.53 21.25 16.75 21.03 16.75 20.75C16.75 20.47 16.53 20.25 16.25 20.25Z" fill="#CBCBCB" />
+              <path d="M8.25 22.75C7.15 22.75 6.25 21.85 6.25 20.75C6.25 19.65 7.15 18.75 8.25 18.75C9.35 18.75 10.25 19.65 10.25 20.75C10.25 21.85 9.35 22.75 8.25 22.75ZM8.25 20.25C7.97 20.25 7.75 20.47 7.75 20.75C7.75 21.03 7.97 21.25 8.25 21.25C8.53 21.25 8.75 21.03 8.75 20.75C8.75 20.47 8.53 20.25 8.25 20.25Z" fill="#CBCBCB" />
+              <path d="M21 8.75H9C8.59 8.75 8.25 8.41 8.25 8C8.25 7.59 8.59 7.25 9 7.25H21C21.41 7.25 21.75 7.59 21.75 8C21.75 8.41 21.41 8.75 21 8.75Z" fill="#CBCBCB" />
+            </svg>
+
+            <p>سبد خرید</p>
+          </NavLink>
+          <NavLink to={"/user-profile"} className="flex flex-col items-center">
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.5 12.75C9.33 12.75 6.75 10.17 6.75 7C6.75 3.83 9.33 1.25 12.5 1.25C15.67 1.25 18.25 3.83 18.25 7C18.25 10.17 15.67 12.75 12.5 12.75ZM12.5 2.75C10.16 2.75 8.25 4.66 8.25 7C8.25 9.34 10.16 11.25 12.5 11.25C14.84 11.25 16.75 9.34 16.75 7C16.75 4.66 14.84 2.75 12.5 2.75Z" fill="#CBCBCB" />
+              <path d="M21.0901 22.75C20.6801 22.75 20.3401 22.41 20.3401 22C20.3401 18.55 16.8202 15.75 12.5002 15.75C8.18015 15.75 4.66016 18.55 4.66016 22C4.66016 22.41 4.32016 22.75 3.91016 22.75C3.50016 22.75 3.16016 22.41 3.16016 22C3.16016 17.73 7.35015 14.25 12.5002 14.25C17.6502 14.25 21.8401 17.73 21.8401 22C21.8401 22.41 21.5001 22.75 21.0901 22.75Z" fill="#CBCBCB" />
+            </svg>
+
+            <p>پروفایل</p>
+          </NavLink>
+        </div>
+
       </div>
-    </div>
+    </>
   )
 }
 

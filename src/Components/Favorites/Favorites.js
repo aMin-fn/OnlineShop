@@ -15,13 +15,13 @@ const Favorites = () => {
     return (
         <div className="">
             <div className="category-header flex items-center justify-between">
-                <img src={LikeSvg} alt="" />
-                <h1 className='text-2xl font-bold'>علاقمندی ها</h1>
-                <div className='w-[1040px] bg-[#D6D6D6] h-[1px]'></div>
+                <img className="hidden lg:inline-block" src={LikeSvg} alt="" />
+                <h1 className='text-sm lg:text-2xl font-bold'>علاقمندی ها</h1>
+                <div className='w-[1040px] bg-[#D6D6D6] h-[1px] hidden lg:block'></div>
             </div>
-            <div className="grid grid-cols-4 gap-6 mt-6  relative">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-6  relative">
                 {temp}
-                <img className="absolute left-[-20px] top-[195px]" src={FlashSvg} alt="" />
+                <img className="hidden lg:inline-block absolute left-[-20px] top-[195px]" src={FlashSvg} alt="" />
 
             </div>
         </div>

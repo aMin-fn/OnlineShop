@@ -51,13 +51,13 @@ const Bestsellers = () => {
     ]
     return (
         <div>
-            <div className="Bestsellers-header flex items-center gap-5">
-                <img src={CategoryIcon} alt="" />
-                <h1 className='text-2xl font-bold'>پر فروش ترین ها</h1>
-                <div className='w-[841px] bg-[#D6D6D6] h-[1px]'></div>
+            <div className="Bestsellers-header flex items-center justify-between gap-5 mt-6">
+                <img className="hidden lg:inline-block" src={CategoryIcon} alt="" />
+                <h1 className='text-sm lg:text-2xl font-bold'>پر فروش ترین ها</h1>
+                <div className='hidden lg:block w-[841px] bg-[#D6D6D6] h-[1px]'></div>
                 <Link className="text-baseRed text-sm font-medium">مشاهده بیشتر</Link>
             </div>
-            <div  className='grid grid-cols-4 gap-6 my-6'>
+            <div  className='grid grid-cols-2 lg:grid-cols-4 gap-6 my-6'>
                 {products.map((item) => {
                     return <BestsellerItem img={item.img} title={item.title} text={item.text} heart={HeartImg} ></BestsellerItem>
                 })}

@@ -28,7 +28,7 @@ const MyNavbar = () => {
   }, [phone]);
 
   return (
-    <div className='flex justify-between py-6 bg-white relative'>
+    <div className='hidden lg:flex justify-between py-6 bg-white relative'>
       <button className='flex items-center justify-center bg-baseRed rounded-lg text-white w-2/12 h-12' type='button'>
         <img width="24px" src={magicpen} alt="" />
         <p className='text-sm'>خودت طراحیش کن !</p>

@@ -74,11 +74,11 @@ const Profile = () => {
       
       console.log(profile);
   return (
-    <div className='w-96  border border-solid border-[#EDEDED] rounded-2xl flex flex-col items-center py-6 px-8 '>
+    <div className='lg:w-96  border border-solid border-[#EDEDED] rounded-2xl flex flex-col items-center py-6 px-8 '>
       
       <div className='text-center border-b border-solid border-[#EDEDED] w-[323px] flex flex-col items-center pb-1 mb-1'>
         <div className='relative mb-2'>
-          <img src={profile.profile_image_path} alt="" />
+          <img src={userphoto} alt="" />
           <button className='absolute left-0 bottom-0 bg-[#B95962] p-2 rounded-full'>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.2401 22.75H6.76005C3.96005 22.75 2.18005 21.08 2.02005 18.29L1.50005 10.04C1.42005 8.79 1.85005 7.59 2.71005 6.68C3.56005 5.77 4.76005 5.25 6.00005 5.25C6.32005 5.25 6.63005 5.06 6.78005 4.76L7.50005 3.33C8.09005 2.16 9.57005 1.25 10.8601 1.25H13.1501C14.4401 1.25 15.9101 2.16 16.5001 3.32L17.2201 4.78C17.3701 5.06 17.6701 5.25 18.0001 5.25C19.2401 5.25 20.4401 5.77 21.2901 6.68C22.1501 7.6 22.5801 8.79 22.5001 10.04L21.9801 18.3C21.8001 21.13 20.0701 22.75 17.2401 22.75ZM10.8601 2.75C10.1201 2.75 9.18005 3.33 8.84005 4L8.12005 5.44C7.70005 6.25 6.89005 6.75 6.00005 6.75C5.16005 6.75 4.38005 7.09 3.80005 7.7C3.23005 8.31 2.94005 9.11 3.00005 9.94L3.52005 18.2C3.64005 20.22 4.73005 21.25 6.76005 21.25H17.2401C19.2601 21.25 20.3501 20.22 20.4801 18.2L21.0001 9.94C21.0501 9.11 20.7701 8.31 20.2001 7.7C19.6201 7.09 18.8401 6.75 18.0001 6.75C17.1101 6.75 16.3001 6.25 15.8801 5.46L15.1501 4C14.8201 3.34 13.8801 2.76 13.1401 2.76H10.8601V2.75Z" fill="white" />

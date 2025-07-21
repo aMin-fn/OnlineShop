@@ -5,6 +5,9 @@ import callSvg from "../../Assets/Images/call.svg"
 import "./UserSignup.css"
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import axios from 'axios'
+import StepperImg from "../../Assets/Images/Stepper mobile.png"
+import Stepper2Img from "../../Assets/Images/Stepper mobile2.png"
+
 const UserSignup = () => {
     const [nextState, setNextState] = useState(false)
 
@@ -141,9 +144,9 @@ const UserSignup = () => {
             <hr className='mb-8' />
             {/* Main content goes here */}
             <div className="flex-grow">
-                <div className="top flex justify-center w-96  m-auto items-center gap-3 text-xs font-normal">
+                <div className="hidden top lg:flex justify-center lg:w-96  m-auto items-center gap-3 text-xs font-normal">
                     <div className='user flex flex-col items-center '>
-                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className='' width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="vuesax/bold/user">
                                 <g id="user">
                                     <path id="Vector" d="M12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12Z" fill="#A72F3B" />
@@ -167,13 +170,22 @@ const UserSignup = () => {
                         <p className='text-[#EDD5D8]'>اطلاعات تماس</p>
                     </div>
                 </div>
-                <div className='bottom flex  justify-center mt-20 mb-14'>
+                <div className='px-6 flex justify-between items-center lg:hidden'>
+                    <div>
+                        {!nextState ? (<p className='text-base'>اطلاعات کاربر</p>) : (<p className='text-base'>اطلاعات تماس</p>)}
+                        {!nextState &&  <p className='text-xs font-light text-[#AFAFAF] mt-2'>مرحله بعد: اطلاعات تماس</p>}
+                    </div>
+                    <div>
+                        {!nextState ? (<img src={StepperImg} alt="" />) : (<img src={Stepper2Img} alt="" />)}
+                    </div>
+                </div>
+                <div className='bottom flex flex-col-reverse gap-5 lg:gap-0 lg:flex-row items-center   justify-center mt-20 mb-14'>
 
-                    {nextState ? <> <div className="right w-[648px] h-[512px] ml-11">
-                        <h1 className='text-lg font-bold text-baseRed mb-4'>فرم ثبت اطلاعات</h1>
+                    {nextState ? <> <div className="right lg:w-[648px] lg:h-[512px] lg:ml-11">
+                        <h1 className='hidden lg:block  text-sm lg:text-lg font-bold text-baseRed mb-4'>فرم ثبت اطلاعات</h1>
                         <div className='border relative border-solid border-[#EDEDED] w-full h-full rounded-3xl p-6'>
                             <form action="">
-                                <div className='flex gap-6'>
+                                <div className='flex flex-col lg:flex-row gap-6'>
                                     <div className='flex flex-col gap-5'>
                                         <div className='flex flex-col'>
                                             <label htmlFor="">شماره موبایل</label>
@@ -241,16 +253,24 @@ const UserSignup = () => {
                                 </div>
 
                             </form>
-                            <button onClick={submitData} className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
-                                <p>ثبت  اطلاعات</p>
+                            <div className='flex justify-between mt-6 lg:mt-0'>
+                                <button onClick={()=>setNextState(false)} className='bg-baseRed py-2 lg:absolute left-6 bottom-6 px-6 w-[140px] lg:w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
+                                    <p>مرحله قبل</p>
 
 
-                            </button>
+                                </button>
+                                <button onClick={submitData} className='bg-baseRed py-2 lg:absolute left-6 bottom-6 px-6 w-[140px] lg:w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
+                                    <p>ثبت  اطلاعات</p>
+
+
+                                </button>
+                                
+                            </div>
                         </div>
                     </div>
 
                         <div className="left">
-                            <svg width="520" height="512" viewBox="0 0 520 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className='w-full lg:w-[520px]' viewBox="0 0 520 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M498.088 346.485C447.648 461.949 313.29 526.633 196.774 509.185C177.814 506.345 125.836 497.888 79.8167 457.989C-8.77377 381.179 -27.7194 229.087 43.7437 121.904C95.7563 43.8934 188.994 -0.328192 277.589 1.8839C296.672 2.36036 369.807 5.29676 434.08 56.8222C443.52 64.3903 464.342 82.3741 483.107 110.904C527.172 177.898 530.959 271.236 498.088 346.485Z" fill="#F0F0F0" />
                                 <g opacity="0.3">
                                     <path d="M320.933 77.2304C319.903 77.1897 319.103 76.3445 319.146 75.344C319.227 73.3998 319.224 71.4231 319.135 69.4688C319.09 68.4801 319.868 67.6414 320.879 67.579C320.891 67.5782 320.903 67.5775 320.916 67.5768C321.945 67.5323 322.816 68.3077 322.862 69.3085C322.955 71.3655 322.959 73.4463 322.873 75.4931C322.834 76.429 322.07 77.1702 321.13 77.2282C321.065 77.2321 320.999 77.2334 320.933 77.2304ZM318.029 59.9859C317.667 58.0627 317.217 56.1364 316.691 54.2587C316.42 53.2931 317.006 52.2958 318 52.0321C318.998 51.771 320.019 52.3391 320.29 53.3054C320.844 55.2806 321.318 57.3084 321.699 59.3319C321.885 60.317 321.213 61.2622 320.2 61.4425C320.127 61.4555 320.053 61.4643 319.98 61.4687C319.05 61.5264 318.202 60.8994 318.029 59.9859ZM313.458 45.2526C312.667 43.461 311.786 41.6811 310.839 39.9615C310.353 39.0787 310.695 37.9794 311.603 37.5066C312.511 37.0353 313.641 37.3667 314.128 38.2495C315.125 40.0604 316.053 41.9352 316.886 43.8216C317.292 44.742 316.854 45.8082 315.908 46.2037C315.706 46.2878 315.498 46.3348 315.29 46.3477C314.526 46.3948 313.778 45.9768 313.458 45.2526ZM305.613 31.8835C304.428 30.3071 303.159 28.7628 301.842 27.2924C301.165 26.5371 301.246 25.3914 302.023 24.7337C302.8 24.0768 303.978 24.1559 304.655 24.9098C306.042 26.4581 307.378 28.0843 308.625 29.7428C309.233 30.5515 309.051 31.6861 308.219 32.277C307.922 32.4883 307.581 32.6018 307.239 32.6229C306.624 32.6607 306.003 32.4024 305.613 31.8835ZM294.899 20.5467C293.388 19.2687 291.798 18.0352 290.175 16.8818C289.344 16.29 289.163 15.1555 289.771 14.3471C290.379 13.5379 291.546 13.3622 292.377 13.9542C294.085 15.1676 295.757 16.4655 297.347 17.8105C298.125 18.4674 298.207 19.6129 297.53 20.3686C297.19 20.7496 296.722 20.9588 296.241 20.9883C295.769 21.0177 295.285 20.8728 294.899 20.5467ZM281.872 11.7973C280.105 10.8744 278.275 10.0142 276.433 9.2399C275.488 8.84258 275.052 7.7749 275.461 6.85595C275.87 5.93627 276.967 5.51306 277.913 5.91038C279.852 6.72486 281.778 7.63096 283.638 8.60205C284.546 9.07631 284.886 10.1754 284.399 11.058C284.082 11.6312 283.494 11.9712 282.872 12.0096C282.536 12.0303 282.191 11.9637 281.872 11.7973ZM212.61 10.9529C212.126 10.0694 212.469 8.97073 213.379 8.49941C215.241 7.53419 217.172 6.63489 219.117 5.82702C220.065 5.43356 221.161 5.86136 221.565 6.78251C221.97 7.70293 221.53 8.76858 220.583 9.16205C218.735 9.92916 216.902 10.7833 215.134 11.7C214.891 11.8258 214.633 11.8941 214.375 11.9101C213.668 11.9538 212.966 11.6011 212.61 10.9529ZM267.184 6.07618C265.251 5.55877 263.271 5.11665 261.299 4.76266C260.286 4.58034 259.617 3.63421 259.804 2.64953C259.991 1.66412 260.964 1.01856 261.977 1.19592C264.054 1.56901 266.139 2.03446 268.174 2.57958C269.167 2.84544 269.751 3.84371 269.477 4.80966C269.261 5.57549 268.57 6.09087 267.797 6.13842C267.596 6.15091 267.389 6.13089 267.184 6.07618ZM227.567 4.75899C227.298 3.79249 227.887 2.79642 228.881 2.53496C230.918 1.99975 233.006 1.54294 235.086 1.17609C236.1 0.992855 237.07 1.652 237.254 2.63723C237.438 3.62247 236.765 4.5662 235.752 4.74522C233.775 5.0937 231.79 5.52775 229.855 6.0367C229.731 6.0692 229.607 6.08812 229.484 6.09583C228.618 6.14926 227.802 5.60541 227.567 4.75899ZM251.552 3.69058C249.549 3.60686 247.517 3.60594 245.511 3.68856C244.481 3.73152 243.612 2.95469 243.568 1.95367C243.525 0.966051 244.303 0.129536 245.313 0.0671099C245.326 0.0663755 245.339 0.065457 245.352 0.065457C247.465 -0.0223068 249.604 -0.0215728 251.712 0.066191C252.741 0.109889 253.539 0.955582 253.495 1.95642C253.454 2.89098 252.692 3.62999 251.752 3.68801C251.686 3.69223 251.619 3.69279 251.552 3.69058Z" fill="#86B1F2" />
@@ -358,11 +378,11 @@ const UserSignup = () => {
                             </svg>
 
 
-                        </div></> : <>  <div className="right w-[648px] h-[481px] ml-11">
-                            <h1 className='text-lg font-bold text-baseRed mb-4'>فرم ثبت اطلاعات</h1>
+                        </div></> : <>  <div className="right lg:w-[648px] lg:h-[481px] lg:ml-11">
+                            <h1 className='hidden lg:block text-sm lg:text-lg font-bold text-baseRed mb-4'>فرم ثبت اطلاعات</h1>
                             <div className='border relative border-solid border-[#EDEDED] w-full h-full rounded-lg p-6'>
                                 <form action="">
-                                    <div className='flex gap-6'>
+                                    <div className='flex flex-col lg:flex-row gap-6'>
                                         <div className='flex flex-col gap-5'>
                                             <div className='flex flex-col'>
                                                 <label htmlFor="">  نام  </label>
@@ -403,17 +423,19 @@ const UserSignup = () => {
                                     </div>
 
                                 </form>
-                                <button onClick={() => setNextState(true)} className='bg-baseRed py-2 absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
-                                    <p>مرحله بعدی</p>
-                                    <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.9993 17.6656C7.8093 17.6656 7.6193 17.5956 7.4693 17.4456L0.949297 10.9256C-0.110703 9.86563 -0.110703 8.12562 0.949297 7.06562L7.4693 0.545625C7.7593 0.255625 8.2393 0.255625 8.5293 0.545625C8.8193 0.835625 8.8193 1.31563 8.5293 1.60563L2.0093 8.12563C1.5293 8.60563 1.5293 9.38563 2.0093 9.86563L8.5293 16.3856C8.8193 16.6756 8.8193 17.1556 8.5293 17.4456C8.3793 17.5856 8.1893 17.6656 7.9993 17.6656Z" fill="white" />
-                                    </svg>
+                                <div className='flex justify-end'>
+                                    <button onClick={() => setNextState(true)} className='bg-baseRed py-2 mt-6 lg:mt-0 lg:absolute left-6 bottom-6 px-6 w-[184px] h-12 flex justify-evenly text-sm rounded-lg text-white items-center'>
+                                        <p>مرحله بعدی</p>
+                                        <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.9993 17.6656C7.8093 17.6656 7.6193 17.5956 7.4693 17.4456L0.949297 10.9256C-0.110703 9.86563 -0.110703 8.12562 0.949297 7.06562L7.4693 0.545625C7.7593 0.255625 8.2393 0.255625 8.5293 0.545625C8.8193 0.835625 8.8193 1.31563 8.5293 1.60563L2.0093 8.12563C1.5293 8.60563 1.5293 9.38563 2.0093 9.86563L8.5293 16.3856C8.8193 16.6756 8.8193 17.1556 8.5293 17.4456C8.3793 17.5856 8.1893 17.6656 7.9993 17.6656Z" fill="white" />
+                                        </svg>
 
-                                </button>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className="left">
-                            <svg width="520" height="480" viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className='w-full lg:w-[520px]' viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M520 367.102H0V367.342H520V367.102Z" fill="#D6D6D6" />
                                 <path d="M129.82 381.625H95.373V381.865H129.82V381.625Z" fill="#D6D6D6" />
                                 <path d="M84.4705 381.625H64.5098V381.865H84.4705V381.625Z" fill="#D6D6D6" />

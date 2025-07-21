@@ -13,14 +13,16 @@ import TopDesigners from '../../Components/TopDesigners/TopDesigners'
 import Wedding from '../../Components/Wedding/Wedding'
 import './Home.css'
 import MyFooter from "../../Components/MyFooter/MyFooter"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const Home = () => {
   return (
     <>
-      <div className="bg-baseRed h-10 w-full flex justify-center items-center font-normal"><p className="text-white font-iranyekan text-sm font-light">با عضویت در کاستومی، اولین سفارش خود را ” رایگان” تحویل بگیرید </p></div>
+      <div className="bg-baseRed hidden h-10 w-full lg:flex justify-center items-center font-normal"><p className="text-white font-iranyekan text-sm font-light">با عضویت در کاستومی، اولین سفارش خود را ” رایگان” تحویل بگیرید </p></div>
       <Header></Header>
-      <hr />
-      <div className='max-w-[1224px]  m-auto font-iranyekan h-auto'>
+      <hr className='hidden lg:block' />
+      <div className='max-w-[1224px] m-5  lg:m-auto font-iranyekan h-auto'>
         <MyNavbar></MyNavbar>
         <Hero></Hero>
         <Category></Category>
