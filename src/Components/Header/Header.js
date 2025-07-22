@@ -8,12 +8,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar.js'
 import Customi from "../../Assets/Images/کاستومی.svg"
 import { useEffect, useState } from 'react'
+import Tshirt from "../../Assets/Images/Frame 26088193.png"
 const Header = () => {
     let temp = [];
     for (let index = 0; index < 8; index++) {
         temp.push(
             <li>
-                <a className='flex justify-between w-full  items-center' href="">
+                <button onClick={() => setSidebar2(true)} className='flex justify-between w-full  items-center' href="">
                     <p>
                         پوشاک
                     </p>
@@ -21,13 +22,14 @@ const Header = () => {
                         <path d="M15.0003 20.6695C14.8103 20.6695 14.6203 20.5995 14.4703 20.4495L7.95027 13.9295C6.89027 12.8695 6.89027 11.1295 7.95027 10.0695L14.4703 3.54953C14.7603 3.25953 15.2403 3.25953 15.5303 3.54953C15.8203 3.83953 15.8203 4.31953 15.5303 4.60953L9.01027 11.1295C8.53027 11.6095 8.53027 12.3895 9.01027 12.8695L15.5303 19.3895C15.8203 19.6795 15.8203 20.1595 15.5303 20.4495C15.3803 20.5895 15.1903 20.6695 15.0003 20.6695Z" fill="#242424" />
                     </svg>
 
-                </a>
+                </button>
             </li>
         )
     }
     const navigate = useNavigate();
 
     const [sidebar, setSidebar] = useState(false);
+    const [sidebar2, setSidebar2] = useState(false);
 
     useEffect(() => {
         if (sidebar) {
@@ -94,10 +96,54 @@ const Header = () => {
                     {temp}
                 </ul>
             </div>
+            <div className={`fixed flex flex-col gap-7 p-6 pl-0 lg:hidden top-0 right-0 w-72 h-full bg-white z-50 transition-transform duration-700 ${sidebar2 ? 'translate-x-0' : 'translate-x-full'}`}>
+                
+                   
+                <button onClick={() => setSidebar2(false)} className='flex gap-2 w-20  items-center' href="">
+                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0253 15.6834C11.8669 15.6834 11.7086 15.6251 11.5836 15.5001C11.3419 15.2584 11.3419 14.8584 11.5836 14.6168L16.2003 10.0001L11.5836 5.38343C11.3419 5.14176 11.3419 4.74176 11.5836 4.5001C11.8253 4.25843 12.2253 4.25843 12.4669 4.5001L17.5253 9.55843C17.7669 9.8001 17.7669 10.2001 17.5253 10.4418L12.4669 15.5001C12.3419 15.6251 12.1836 15.6834 12.0253 15.6834Z" fill="#242424" />
+                    <path d="M16.941 10.625H2.91602C2.57435 10.625 2.29102 10.3417 2.29102 10C2.29102 9.65833 2.57435 9.375 2.91602 9.375H16.941C17.2827 9.375 17.566 9.65833 17.566 10C17.566 10.3417 17.2827 10.625 16.941 10.625Z" fill="#242424" />
+                </svg>
+                    <p>
+                        پوشاک
+                    </p>
+                </button>
+               
+                <div className='text-sm'>
+                    <p>تیشرت زنانه</p>
+                    <div className='flex gap-2 overflow-hidden mt-3'>
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                    </div>
+                </div>
+                <div className='text-sm'>
+                    <p>تیشرت مردانه</p>
+                    <div className='flex gap-2 overflow-hidden mt-3'>
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                    </div>
+                </div>
+                <div className='text-sm'>
+                    <p>تیشرت بچگانه</p>
+                    <div className='flex gap-2 overflow-hidden mt-3'>
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                        <img src={Tshirt} alt="" />
+                    </div>
+                </div>
+            </div>
             {sidebar && (
                 <div
                     className="fixed inset-0 bg-black/50 z-40"
-                    onClick={() => setSidebar(false)} 
+                    onClick={() => setSidebar(false)}
                 ></div>
             )}
         </>
